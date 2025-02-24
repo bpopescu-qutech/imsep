@@ -1,54 +1,48 @@
 ---
-title: Setup
+title: Introduction
 ---
 
-FIXME: Setup instructions live in this document. Please specify the tools and
-the data sets the Learner needs to have installed.
+The purpose of this course is to introduce the basics of professional software development to 
+QuTech PhD students and researchers. We firmly believe that adopting professional software development 
+practices throughout our research organization will yield significant long-term advantages, including:
 
-## Data Sets
+- Faster onboarding of new PhD students
+- Efficiencies across the organization through potential software and know-how reuse
+- More transparent and reproducible results for research that relies on in-house built software tools
 
-<!--
-FIXME: place any data you want learners to use in `episodes/data` and then use
-       a relative link ( [data zip file](data/lesson-data.zip) ) to provide a
-       link to it, replacing the example.com link.
--->
-Download the [data zip file](https://example.com/FIXME) and unzip it to your Desktop
+The course is structured in three parts intended to be offered as half-day workshops:
 
-## Software Setup
+- Part 1 (Episodes 1, 2, 3) starts by framing the course in the context of the QuTech Software Maturity Model, and then
+dwells into its technical content by introducing the fundamentals of version control and Git.
+- Part 2 (Episodes 4, 5, and 6) introduces GitLab, and its support for more advanced Git workflows and ends with
+introducing the basics of Python Virtual Environments.
+- Part 3 (Episode 7) covers the basics of "clean code", with a focus on Python and its development tools ecosystem. 
 
-::::::::::::::::::::::::::::::::::::::: discussion
+This course focuses on practical knowledge that can be immediately applied. It also emphasizes "learning by doing", 
+with several hands-on, interactive assignments designed to help participants practice and apply newly introduced 
+concepts and tools.
 
-### Details
+This course has no prerequisites. However, participants should have an interest or affinity for Python programming 
+and a basic understanding of using Linux/Unix command line interfaces.
 
-Setup for different systems can be presented in dropdown menus via a `spoiler`
-tag. They will join to this discussion block, so you can give a general overview
-of the software used in this lesson here and fill out the individual operating
-systems (and potentially add more, e.g. online setup) in the solutions blocks.
+## Required Software {#required}
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::
+This setup document will walk you through the process of installing or upgrading
+the required software in the following order.
 
-:::::::::::::::: spoiler
-
-### Windows
-
-Use PuTTY
-
-::::::::::::::::::::::::
-
-:::::::::::::::: spoiler
-
-### MacOS
-
-Use Terminal.app
-
-::::::::::::::::::::::::
+1. **[Git]** (&ge; 2.45 recommended)
+2. **[Python]** (3.12 recommended)
+3. A number of Python tools:
+   a. **[PyCharm]** (use the Community Edition)
+   b. **[PyLint]**
+   c. **[Coverage.py]** (&ge; 7.3 recommended)
 
 
-:::::::::::::::: spoiler
 
-### Linux
 
-Use Terminal
-
-::::::::::::::::::::::::
+[Git]: https://git-scm.com/
+[Python]: https://www.python.org/
+[PyCharm]: https://www.jetbrains.com/pycharm/
+[PyLint]: https://pypi.org/project/pylint/
+[Coverage.py]: https://coverage.readthedocs.io/en/latest/
 
