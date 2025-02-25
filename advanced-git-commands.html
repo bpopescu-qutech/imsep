@@ -347,7 +347,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Advanced Git Commands</h1>
-        <p>Last updated on 2025-02-24 |
+        <p>Last updated on 2025-02-25 |
 
         <a href="https://github.com/QuTech-Delft/prosoftdev-research/edit/main/episodes/advanced-git-commands.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -1403,6 +1403,25 @@ with the name of the branch:</p>
 </h3>
 <pre class="output" tabindex="0"><code>Switched to branch 'develop'</code></pre>
 </div>
+<div id="git-switch-vs-git-checkout" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="git-switch-vs-git-checkout" class="callout-inner">
+<h3 class="callout-title">‘git switch’ vs ‘git checkout’</h3>
+<div class="callout-content">
+<p>The original way of switching branches in Git was using
+<code>git checkout &lt;branch&gt;</code> — and you may still find such
+examples online. However, <code>git checkout</code> had multiple roles
+(was also used to restore versions of a file for example), making it
+confusing. To simplify things, starting with version <em>2.23</em> Git
+has introduced the <code>git switch</code>, command which is dedicated
+for branch changes. Use <code>git switch &lt;branch&gt;</code> for
+switching branches and <code>git checkout -- &lt;file&gt;</code> to
+restore files.</p>
+</div>
+</div>
+</div>
 <div id="create-and-switch-to-branch-shortcut" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -1769,8 +1788,8 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://QuTech-Delft.github.io/prosoftdev-research/advanced-git-commands.html",
   "identifier": "https://QuTech-Delft.github.io/prosoftdev-research/advanced-git-commands.html",
-  "dateCreated": "2025-02-24",
-  "dateModified": "2025-02-24",
+  "dateCreated": "2025-02-25",
+  "dateModified": "2025-02-25",
   "datePublished": "2025-02-25"
 }
 
