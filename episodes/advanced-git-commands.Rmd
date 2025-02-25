@@ -919,6 +919,18 @@ Switched to branch 'develop'
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
+##### 'git switch' vs 'git checkout'
+
+The original way of switching branches in Git was using `git checkout <branch>` — and you may still find such examples
+online. However, `git checkout` had multiple roles (was also used to restore versions of a file for example), making it
+confusing. To simplify things, starting with version *2.23* Git has introduced the `git switch`, command
+which is dedicated for branch changes. Use `git switch <branch>` for switching branches and `git checkout -- <file>`
+to restore files.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
 ##### Create and Switch to Branch Shortcut
 
 A shortcut to create a new branch and immediately switch to it:
