@@ -195,7 +195,7 @@ its history [here](https://www.geeksforgeeks.org/history-of-git/),
 - In this episode we use Git from the Unix Shell. Some previous experience with the shell is expected,
 *but isn't mandatory*.
 - It is also assumed that you have already installed *Git* on your system. If this is not the case, please do
-this now, by following the download/installation instructions [here](https://https://git-scm.com/)
+this now, by following the download/installation instructions [here](https://git-scm.com/)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -407,6 +407,11 @@ It is important to note that `git init` will create a repository that can includ
 files---there is no need to create separate repositories nested within the `recipes` repository, whether
 subdirectories are present from the beginning or added later. Also, note that the creation of the `recipes` directory
 and its initialization as a repository are completely separate processes.
+
+It is also important to understand that the Git repositories that you will create and use in this episode and the next
+one are all `local` - meaning they only exists on your computer, and can only be used by you. In the next workshop we
+will show you how to transition from a local repository to an online one - which will enable you to collaborate
+with multiple colleagues working on the same project.
 
 If we use `ls` to show the directory's contents, it appears that nothing has changed:
 
