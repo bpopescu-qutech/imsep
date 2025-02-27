@@ -54,7 +54,20 @@ When we log into GitLab for the first time, we are greeted by a welcome page:
 
 ![](fig/gitlab_login.jpg){alt='TUD GitLab Login Page'}
 
-The “Explore projects” page looks like this:
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+##### GitLab Projects
+
+The "project" is essentially GitLab's "collaboration unit".
+A GitLab project is the central hub where everything related to a specific piece of work (code, discussions,
+automation, documentation, and tracking) comes together. GitLab projects can be "public" - visible to everyone
+who can access a given GitLab platform, or "private" - only visible to you (the project owner) and to
+people you have specifically invited to collaborate on that project.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+You can browse/explore projects accessible from your GitLab portal, by following the “Explore projects” link:
 
 ![Project overview page](fig/project-explore.png){alt="Explore projects page with tab “Most starred” open.
 The tab shows a list of projects with icon, name, descriptions, and four statistical values for each entry."}
@@ -71,7 +84,24 @@ the previous months.
 You can use the filter field next to the tab names to search through all projects that
 are visible to you.
 
-In the next section we will explain how you can create new GitLab projects
+Finally, by following the "Groups" link on the left of your portal, you can see the GitLab project groups you
+have access to.
+
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+##### GitLab Groups
+
+A GitLab 'group' is a collection of related projects that share the same members, permissions, and settings. Such
+groups can be used to organize and manage projects related to the same organization, such as a faculty, department,
+or research group. As an analogy, you can think of GitLab projects as individual files, while the GitLab groups
+correspond to the folders/directories containing these files. In this course we will not deal directly with such
+groups, but you should be aware they exist - as your research team may make use of them to organize their projects.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+With the basic GitLab concepts now covered, in the next section we will explain how you can create new GitLab projects
+and link them to the Git concepts we have covered in the previous episodes.
 
 ## GitLab Projects
 
