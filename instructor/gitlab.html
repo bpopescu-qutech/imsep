@@ -357,7 +357,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>GitLab</h1>
-        <p>Last updated on 2025-02-27 |
+        <p>Last updated on 2025-03-03 |
 
         <a href="https://github.com/QuTech-Delft/prosoftdev-research/edit/main/episodes/gitlab.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -432,7 +432,8 @@ of work (code, discussions, automation, documentation, and tracking)
 comes together. GitLab projects can be “public” - visible to everyone
 who can access a given GitLab platform, or “private” - only visible to
 you (the project owner) and to people you have specifically invited to
-collaborate on that project.</p>
+collaborate on that project. Each GitLab project is associated with a
+Git repo, which is stored internally by the GitLab platform.</p>
 </div>
 </div>
 </div>
@@ -787,9 +788,6 @@ email):</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">$</span> ssh-keygen <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"a.linguini@ratatouille.fr"</span></span></code></pre>
 </div>
-<p>If you are using a legacy system that doesn’t support the Ed25519
-algorithm, use:
-<code>$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code></p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -803,20 +801,13 @@ Enter file in which to save the key (/c/Users/Alfredo/.ssh/id_ed25519):</code></
 <pre class="output" tabindex="0"><code>Created directory '/c/Users/Alfredo/.ssh'.
 Enter passphrase (empty for no passphrase):</code></pre>
 </div>
-<p>Now, it is prompting Alfredo for a passphrase. Since he is using his
-kitchen’s laptop that other people sometimes have access to, he wants to
-create a passphrase. Be sure to use something memorable or save your
-passphrase somewhere, as there is no “reset my password” option. Note
-that, when typing a passphrase on a terminal, there won’t be any visual
-feedback of your typing. This is normal: your passphrase will be
-recorded even if you see nothing changing on your screen.</p>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>Enter same passphrase again:</code></pre>
-</div>
-<p>After entering the same passphrase a second time, we receive the
-confirmation</p>
+<p>Now, it is prompting Alfredo for a passphrase. Alfredo will be using
+this key from his own laptop, from his password-protected account, so
+this extra security layer of having a passkey for this SSH key is not
+necessary at this point, so he can leave it empty - by pressing
+<code>Enter</code> twise.</p>
+<p>At this point we should receive the confirmation that the key has
+been created:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -842,10 +833,10 @@ share it. The public key is appropriately named. The “key fingerprint”
 is a shorter version of a public key.</p>
 <p>Now that we have generated the SSH keys, we will find the SSH files
 when we check.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> ~/.ssh</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-al</span> ~/.ssh</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -862,17 +853,16 @@ drwxr-xr-x 1 Alfredo   197121   0 Jul 16 14:48 ../
 <h3 id="copy-the-public-key-to-gitlab">Copy the public key to GitLab<a class="anchor" aria-label="anchor" href="#copy-the-public-key-to-gitlab"></a></h3>
 <p>Now we have a SSH key pair and we can run this command to check if
 GitLab can read our authentication.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@gitlab.tudelft.nl</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@gitlab.tudelft.nl</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>The authenticity of host 'gitlab.tudelft.nl (192.30.255.112)' can't be established.
-RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-This key is not known by any other names
+<pre class="output" tabindex="0"><code>The authenticity of host 'gitlab.tudelft.nl (192.30.255.112)' can't be established. RSA key fingerprint
+is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8. This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])? y
 Please type 'yes', 'no' or the fingerprint: yes
 Warning: Permanently added 'gitlab.tudelft.nl' (RSA) to the list of known hosts.
@@ -882,10 +872,10 @@ git@gitlab.tudelft.nl: Permission denied (publickey).</code></pre>
 <p>First, we need to copy the public key. Be sure to include the
 <code>.pub</code> at the end, otherwise you’re looking at the private
 key.</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -903,10 +893,10 @@ a title, and set an expiration date. Once everything is filled in, you
 can click the <code>Add key</code> button.</p>
 <p>Now that we’ve set that up, let’s check our authentication again from
 the command line.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="ex">$</span> ssh <span class="at">-T</span> git@gitlab.tudelft.nl</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="ex">$</span> ssh <span class="at">-T</span> git@gitlab.tudelft.nl</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -922,10 +912,10 @@ now ready to push our work to the remote repository.</p>
 <p>Now that authentication is setup, we can return to the remote. This
 command will push the changes from our local repository to the
 repository on GitLab:</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="ex">$</span> git push origin main</span></code></pre>
 </div>
 <p>Since Alfredo set up a passphrase, it will prompt him for it. If you
 completed advanced settings for your authentication, it will not prompt
@@ -955,10 +945,10 @@ To https://gitlab.tudelft.nl/alflin/recipes.git
 password. For example, this is the default behavior for Git Bash on
 Windows. If you want to type your username and password at the terminal
 instead of using a password manager, type:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">$</span> unset SSH_ASKPASS</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="ex">$</span> unset SSH_ASKPASS</span></code></pre>
 </div>
 <p>in the terminal, before you run <code>git push</code>. Despite the
 name, <a href="https://git-scm.com/docs/gitcredentials#_requesting_credentials" class="external-link">Git
@@ -974,10 +964,10 @@ for usernames and passwords.</p>
 <p>Our local and remote repositories are now in this state:</p>
 <figure><img src="../fig/github-repo-after-first-push.svg" alt="GitLab repo after first push" class="figure mx-auto d-block"></figure><p>We can pull changes from the remote repository to the local one as
 well:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="ex">$</span> git pull origin main</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1129,9 +1119,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://QuTech-Delft.github.io/prosoftdev-research/instructor/gitlab.html",
   "identifier": "https://QuTech-Delft.github.io/prosoftdev-research/instructor/gitlab.html",
-  "dateCreated": "2025-02-27",
-  "dateModified": "2025-02-27",
-  "datePublished": "2025-02-27"
+  "dateCreated": "2025-03-03",
+  "dateModified": "2025-03-03",
+  "datePublished": "2025-03-03"
 }
 
   </script><script>
