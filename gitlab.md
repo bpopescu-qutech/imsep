@@ -62,7 +62,8 @@ The "project" is essentially GitLab's "collaboration unit".
 A GitLab project is the central hub where everything related to a specific piece of work (code, discussions,
 automation, documentation, and tracking) comes together. GitLab projects can be "public" - visible to everyone
 who can access a given GitLab platform, or "private" - only visible to you (the project owner) and to
-people you have specifically invited to collaborate on that project.
+people you have specifically invited to collaborate on that project. Each GitLab project is associated with
+a Git repo, which is stored internally by the GitLab platform.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -327,8 +328,8 @@ With the `Clone with SSH` string you copied from the GitLab page, go into the lo
 $ git remote add origin git@gitlab.tudelft.nl:alflin/recipes.git
 ```
 
-Make sure to use the URL for your repository rather than Alfredo's: the only
-difference should be your username instead of `alflin`.
+Make sure to use the URL for your repository rather than Alfredo's: the only difference should be your username
+instead of `alflin`.
 
 `origin` is a local name used to refer to the remote repository. It could be called
 anything, but `origin` is a convention that is often used by default in git
@@ -412,9 +413,6 @@ algorithm to use and `-C` attaches a comment to the key (here, Alfredo's email):
 $ ssh-keygen -t ed25519 -C "a.linguini@ratatouille.fr"
 ```
 
-If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
-`$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
-
 ```output
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/c/Users/Alfredo/.ssh/id_ed25519):
@@ -427,17 +425,12 @@ Created directory '/c/Users/Alfredo/.ssh'.
 Enter passphrase (empty for no passphrase):
 ```
 
-Now, it is prompting Alfredo for a passphrase. Since he is using his kitchen's laptop that other
-people sometimes have access to, he wants to create a passphrase. Be sure to use something memorable
-or save your passphrase somewhere, as there is no "reset my password" option.
-Note that, when typing a passphrase on a terminal, there won't be any visual feedback of your typing.
-This is normal: your passphrase will be recorded even if you see nothing changing on your screen.
+Now, it is prompting Alfredo for a passphrase. Alfredo will be using this key from his own laptop, from his
+password-protected account, so this extra security layer of having a passkey for this SSH key is not necessary
+at this point, so he can leave it empty - by pressing `Enter` twise.
 
-```output
-Enter same passphrase again:
-```
 
-After entering the same passphrase a second time, we receive the confirmation
+At this point we should receive the confirmation that the key has been created:
 
 ```output
 Your identification has been saved in /c/Users/Alfredo/.ssh/id_ed25519
@@ -485,9 +478,8 @@ ssh -T git@gitlab.tudelft.nl
 ```
 
 ```output
-The authenticity of host 'gitlab.tudelft.nl (192.30.255.112)' can't be established.
-RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
-This key is not known by any other names
+The authenticity of host 'gitlab.tudelft.nl (192.30.255.112)' can't be established. RSA key fingerprint
+is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8. This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])? y
 Please type 'yes', 'no' or the fingerprint: yes
 Warning: Permanently added 'gitlab.tudelft.nl' (RSA) to the list of known hosts.
