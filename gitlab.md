@@ -427,7 +427,7 @@ Enter passphrase (empty for no passphrase):
 
 Now, it is prompting Alfredo for a passphrase. Alfredo will be using this key from his own laptop, from his
 password-protected account, so this extra security layer of having a passkey for this SSH key is not necessary
-at this point, so he can leave it empty - by pressing `Enter` twise.
+at this point, so he can leave it empty - by pressing <kbd>Enter</kbd> twice.
 
 
 At this point we should receive the confirmation that the key has been created:
@@ -535,9 +535,6 @@ our local repository to the repository on GitLab:
 $ git push origin main
 ```
 
-Since Alfredo set up a passphrase, it will prompt him for it. If you completed advanced settings
-for your authentication, it will not prompt for a passphrase.
-
 ```output
 Enumerating objects: 16, done.
 Counting objects: 100% (16/16), done.
@@ -549,33 +546,6 @@ remote: Resolving deltas: 100% (2/2), done.
 To https://gitlab.tudelft.nl/alflin/recipes.git
  * [new branch]      main -> main
 ```
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-
-## Password Managers
-
-If your operating system has a password manager configured, `git push` will
-try to use it when it needs your username and password.  For example, this
-is the default behavior for Git Bash on Windows. If you want to type your
-username and password at the terminal instead of using a password manager,
-type:
-
-```bash
-$ unset SSH_ASKPASS
-```
-
-in the terminal, before you run `git push`.  Despite the name, [Git uses
-`SSH_ASKPASS` for all credential
-entry](https://git-scm.com/docs/gitcredentials#_requesting_credentials), so
-you may want to unset `SSH_ASKPASS` whether you are using Git via SSH or
-https.
-
-You may also want to add `unset SSH_ASKPASS` at the end of your `~/.bashrc`
-to make Git default to using the terminal for usernames and passwords.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Our local and remote repositories are now in this state:
 
@@ -593,59 +563,73 @@ From https://gitlab.tudelft.nl/alflin/recipes
 Already up-to-date.
 ```
 
-Pulling has no effect in this case because the two repositories are already
-synchronized.  If someone else had pushed some changes to the repository on
-GitLab, though, this command would download them to our local repository.
+Pulling has no effect in this case because the two repositories are already synchronized. If someone else had pushed
+some changes to the repository on GitLab, though, this command would download them to our local repository.
 
 
-## Adding Project Members
+## Adding/Removing Project Members
 
-So far, each of you has created a GitLab project that no one but you can
-contribute to; depending on the visibility setting, no one but you might be able
-to even see it.
+So far, each of you has created a GitLab project that no one but you can contribute to; depending on the visibility
+setting, no one but you might be able to even see it.
 
-Git and GitLab can be and is used for one-person projects. But we want our
-colleagues to contribute to our recipes collection. To achieve this, we will grant others access
-to our GitLab project.
+Git and GitLab can be and is used for one-person projects. But we want our colleagues to contribute to our recipes
+collection. To achieve this, we will grant others access to our GitLab project.
 
-Using the menu on the left side of the project homepage (or nearly any other
-project page), we navigate to the project members page hovering over or clicking
-on "Manage" and then clicking on "Members" in the submenu. The
+Using the menu on the left side of the project homepage (or nearly any other project page), we navigate to the project
+members page hovering over or clicking on "Manage" and then clicking on "Members" in the submenu. The
 project member page should look similar to the following screenshot:
 
 ![Project members page](fig/initial-members.png){alt='Project Members page'}
 
-On the page we can see the page title, "Project members", three buttons to the
-left of the title, and a filterable table of members, currently only listing
-ourselves.
+On the page we can see the page title, "Project members", three buttons to the left of the title, and a filterable
+table of members, currently only listing ourselves.
 
-The table shows our full name and account name, why we are a member of this project,
-what our maximum role is–more on that in a bit–, when we got access—at the moment we
-created the project—, a disabled membership expiration date widget, and three dates on
-our activity.
+The table shows our full name and account name, why we are a member of this project, what our maximum role is–more on
+that in a bit–, when we got access—at the moment we created the project—, a disabled membership expiration date widget,
+and three dates on our activity.
 
-For practice we will all add an instructor to our project and remove them again
-right away. Click the button labeled "Invite members", type in the username your
-instructors provided you with into the search field, make sure that "Guest" is
-selected as a role, and click the button labeled "Invite".
+For practice we will all add an instructor to our project and remove them again right away. Click the button labeled
+"Invite members", type in the username your instructors provided you with into the search field, make sure that
+"Guest" is selected as a role, and click the button labeled "Invite".
 
-Your instructor should now be listed next to you in the table.
-Unlike in your row, you can change the role and the expiration date of this new entry.
+Your instructor should now be listed next to you in the table. Unlike in your own row, you can change the role and
+the expiration date of this new entry.
 
-The role determines what the member is allowed to do in the project.
-An owner has full rights, a guest almost none.
-GitLab’s handbook gives a detailed [overview](https://docs.gitlab.com/ee/user/permissions.html) of
-the different roles’ permissions.
 
-Now, we are going to remove the instructor from your project’s members again.
-Click the three dots on the right in the instructor’s row, then click on "Remove member", and
-finally click the button of the same name in the popup dialog.
-The page reloads itself and the entry vanishes from the table.
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+##### Project member roles
+
+In GitLab, every project member is assigned a role that defines their level of access and available actions within the
+project. Common roles include **Guest**, **Developer**, and **Owner**. Each role comes with specific permissions —
+for example, **Maintainers** can push code, while **Owners** have full control over the project. Choosing the right role
+ensures proper collaboration while protecting critical project settings. You can consult GitLab’s handbook for a
+detailed [overview](https://docs.gitlab.com/ee/user/permissions.html) of the different roles’ permissions.
+The following roles are commonly used in GitLab software projects:
+
+- **Guest**
+  - Can view project files, and read issues and comments
+  - Cannot push git commits
+  - Ideal for external stakeholders or casual viewers
+- **Maintainer**
+  - Can push git commits
+  - Can manage advanced git and project workflows, such as branches and pipelines
+  - Cannot delete the project
+- **Owner**
+  - Full control over everything in the project
+  - Can manage settings, members, and even delete the project
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+The owner of the project can add as well as remove project members. Removing project members is done from the members
+list like this:
+
+![Removing project members](fig/gitlab_remove_member.jpg){alt='Removing project members'}
 
 
 ::: challenge
 
-##### Adding Members
+##### Adding project members
 
 Get into pairs and add each other with the role "Maintainer" to your projects.
 
@@ -657,6 +641,50 @@ This exercise should take about 5 minutes.
 :::
 
 
+## Cloning a GitLab project repo
+
+So far we have shown how you can link your local Git repo to a GitLab project, so you can keep these two repos in sync.
+However, this requires that you have already created this local repo. A more common situation is that a user joins
+a GitLab project, and wants to contribute to it by adding content to the project's repo. To do this, the new user
+needs to obtain a copy of the GitLab's project repo on their workstation. This is  done using the *git clone* command
+like this:
+
+```bash
+$ git clone git@gitlab.tudelft.nl:bcpopescu/recipes.git
+```
+
+```output
+Cloning into 'recipes'...
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 18 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (18/18), 4.17 KiB | 2.09 MiB/s, done.
+Resolving deltas: 100% (4/4), done.
+```
+
+Note that *git clone* requires the same SSH authentication you have set up earlier in this section. It also requires
+that the party cloning the project is a project member (unless the project is public). Once a project has been cloned,
+a copy of the project's repo is placed on the local system - at the place where the clone command was invoked.
+The user can then use that repo the same way they would use any other local git repos, making changes, commiting
+them and pushing these commits to GitLab so the project state is kept in sync.
+
+::: challenge
+
+##### Collaborating over a GitLab project
+
+Start working with your colleagues to whom you have assigned the "Maintainer" role in the previous challenge.
+
+Clone each other's project repos, and make one change to it.
+
+Commit the change, and push it to GitLab.
+
+The other project member should then pull the repo from GitLab, and confirm the change is also present in
+their local repo.
+
+This exercise should take about 5 minutes.
+
+:::
 
 
 
