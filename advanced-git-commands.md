@@ -14,10 +14,9 @@ exercises: 80
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Clone a remote repository.
-- Collaborate by pushing to a common repository.
-- Describe the basic collaborative workflow.
-- Explain what conflicts are and when they can occur.
-- Resolve conflicts resulting from a merge.
+- Describe the basic collaborative workflow: pushing changes to a common repository.
+- Explain what conflicts are, when they can occur, and how we can sole them.
+- Look at Git branches, and show how they can be managed/merged through GitLab *merge requests*.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -42,24 +41,16 @@ won't need to give anyone access on GitLab, because both 'partners' are you.
 
 ### Adding collaborators to your GitLab repo
 
-The Owner needs to give the Collaborator access. In your project page on GitLab, click the "Manage"
-menu on the left panel, then select the "Members" option. On the new "Project members" page
-(see screenshot below), click on the "Invite members" button, and then fill in the
-Collaborator's details as shown below.
-
-![](fig/gitlab_add_member.jpg){alt='Adding a new member to your GitLab project'}
-
-Once the Collaborator has been added to the project, they will receive an email
-instructing them how to accept the invitation and access the project
+In case you have not done this already, revisit what you have just learned in the last hour and add
+your Collaborator to your GitLab recipes project, giving them a "Maintainer" role, which should give them
+enough rights to complete all the collaborative workflows we will practice today.
 
 ### Cloning a remote GitLab repo
 
-Next, the Collaborator needs to download a copy of the Owner's repository to her
-machine. This is called "cloning a repo".
+Next, the Collaborator needs to download a copy of the Owner's repository to her machine. This is called "cloning a repo".
 
-The Collaborator doesn't want to overwrite her own version of `recipes.git`, so
-needs to clone the Owner's repository to a different location than her own
-repository with the same name.
+The Collaborator doesn't want to overwrite her own version of `recipes.git`, so needs to clone the Owner's repository
+to a different location than her own repository with the same name.
 
 To clone the Owner's repo into her `projects` folder, the Collaborator enters:
 
@@ -67,19 +58,26 @@ To clone the Owner's repo into her `projects` folder, the Collaborator enters:
 $ git clone git@gitlab.tudelft.nl:alflin/recipes.git ~/projects/alflin-recipes
 ```
 
+```output
+Cloning into 'recipes'...
+remote: Enumerating objects: 18, done.
+remote: Counting objects: 100% (18/18), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 18 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (18/18), 4.17 KiB | 2.09 MiB/s, done.
+Resolving deltas: 100% (4/4), done.
+```
+
 Replace 'alflin' with the Owner's username.
 
-If you choose to clone without the clone path
-(`~/projects/alflin-recipes`) specified at the end,
-you will clone inside your own recipes folder!
-Make sure to navigate to the `projects` folder first.
+If you choose to clone without the clone path (`~/projects/alflin-recipes`) specified at the end, you will clone inside
+your own recipes folder! Make sure to navigate to the `projects` folder first.
 
 ![](fig/gitlab-collaboration.svg){alt='A diagram showing that "git clone" can create a copy of a remote GitLab repository, allowing a second person to create their own local repository that they can make changes to.'}
 
 ### Making changes
 
-The Collaborator can now make a change in her clone of the Owner's repository,
-exactly the same way as we've been doing before:
+The Collaborator can now make a change in her clone of the Owner's repository, exactly the same way as we've been doing before:
 
 ```bash
 $ cd ~/projects/alflin-recipes
@@ -123,49 +121,11 @@ To gitlab.tudelft.nl:alflin/recipes.git
    9272da5..29aba7c  main -> main
 ```
 
-Note that we didn't have to create a remote called `origin`: Git uses this
-name by default when we clone a repository.  (This is why `origin` was a
-sensible choice earlier when we were setting up remotes by hand.)
+Note that we didn't have to create a remote called `origin`: Git uses this name by default when we clone a repository.
+(This is why `origin` was a sensible choice earlier when we were setting up remotes by hand.)
 
-Take a look at the Owner's repository on GitLab again, and you should be
-able to see the new commit made by the Collaborator. You may need to refresh
-your browser to see the new commit.
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Some more about remotes
-
-In this episode and the previous one, our local repository has had
-a single "remote", called `origin`. A remote is a copy of the repository
-that is hosted somewhere else, that we can push to and pull from, and
-there's no reason that you have to work with only one. For example,
-on some large projects you might have your own copy in your own GitLab
-account (you'd probably call this `origin`) and also the main "upstream"
-project repository (let's call this `upstream` for the sake of examples).
-You would pull from `upstream` from time to
-time to get the latest updates that other people have committed.
-
-Remember that the name you give to a remote only exists locally. It's
-an alias that you choose - whether `origin`, or `upstream`, or `alfred` -
-and not something intrinsic to the remote repository.
-
-The `git remote` family of commands is used to set up and alter the remotes
-associated with a repository. Here are some of the most useful ones:
-
-- `git remote -v` lists all the remotes that are configured (we already used
-  this in the last episode)
-- `git remote add [name] [url]` is used to add a new remote
-- `git remote remove [name]` removes a remote. Note that it doesn't affect the
-  remote repository at all - it just removes the link to it from the local repo.
-- `git remote set-url [name] [newurl]` changes the URL that is associated
-  with the remote. This is useful if it has moved, e.g. to a different GitLab
-  account, or from GitLab to a different hosting service. Or, if we made a typo when
-  adding it!
-- `git remote rename [oldname] [newname]` changes the local alias by which a remote
-  is known - its name. For example, one could use this to change `upstream` to `alfred`.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+Take a look at the Owner's repository on GitLab again, and you should be able to see the new commit made by the
+Collaborator. You may need to refresh your browser to see the new commit.
 
 ### Sync-ing changes made by collaborators
 
@@ -271,16 +231,6 @@ and then the author can address the comment using the same GitLab web interface.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Version History, Backup, and Version Control
-
-Some backup software can keep a history of the versions of your files. They also
-allows you to recover specific versions. How is this functionality different from version control?
-What are some of the benefits of using version control, Git and GitLab?
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Solving Conflicts
 

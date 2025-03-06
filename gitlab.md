@@ -579,7 +579,7 @@ Using the menu on the left side of the project homepage (or nearly any other pro
 members page hovering over or clicking on "Manage" and then clicking on "Members" in the submenu. The
 project member page should look similar to the following screenshot:
 
-![Project members page](fig/initial-members.png){alt='Project Members page'}
+![Project members page](fig/gitlab-initial-members.jpg){alt='Project Members page'}
 
 On the page we can see the page title, "Project members", three buttons to the left of the title, and a filterable
 table of members, currently only listing ourselves.
@@ -588,9 +588,12 @@ The table shows our full name and account name, why we are a member of this proj
 that in a bit–, when we got access—at the moment we created the project—, a disabled membership expiration date widget,
 and three dates on our activity.
 
-For practice we will all add an instructor to our project and remove them again right away. Click the button labeled
-"Invite members", type in the username your instructors provided you with into the search field, make sure that
-"Guest" is selected as a role, and click the button labeled "Invite".
+For practice we will all add an instructor to our project and remove them again right away, as shown in the picture below:
+
+![](fig/gitlab_add_member.jpg){alt='Adding a new member to your GitLab project'}
+
+Click the button labeled "Invite members", type in the username your instructors provided you with into the search
+field, make sure that "Guest" is selected as a role, and click the button labeled "Invite".
 
 Your instructor should now be listed next to you in the table. Unlike in your own row, you can change the role and
 the expiration date of this new entry.
@@ -631,60 +634,16 @@ list like this:
 
 ##### Adding project members
 
-Get into pairs and add each other with the role "Maintainer" to your projects.
+Get into pairs and add each other with the role "Maintainer" to your projects, and set the
+expiration for this membership to one month from now.
 
 The "Maintainer" role grants just enough permissions for all the collaborative
 tasks we will practice in this lesson.
 
-This exercise should take about 5 minutes.
+This exercise should take about 3 minutes.
 
 :::
 
-
-## Cloning a GitLab project repo
-
-So far we have shown how you can link your local Git repo to a GitLab project, so you can keep these two repos in sync.
-However, this requires that you have already created this local repo. A more common situation is that a user joins
-a GitLab project, and wants to contribute to it by adding content to the project's repo. To do this, the new user
-needs to obtain a copy of the GitLab's project repo on their workstation. This is  done using the *git clone* command
-like this:
-
-```bash
-$ git clone git@gitlab.tudelft.nl:bcpopescu/recipes.git
-```
-
-```output
-Cloning into 'recipes'...
-remote: Enumerating objects: 18, done.
-remote: Counting objects: 100% (18/18), done.
-remote: Compressing objects: 100% (15/15), done.
-remote: Total 18 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
-Receiving objects: 100% (18/18), 4.17 KiB | 2.09 MiB/s, done.
-Resolving deltas: 100% (4/4), done.
-```
-
-Note that *git clone* requires the same SSH authentication you have set up earlier in this section. It also requires
-that the party cloning the project is a project member (unless the project is public). Once a project has been cloned,
-a copy of the project's repo is placed on the local system - at the place where the clone command was invoked.
-The user can then use that repo the same way they would use any other local git repos, making changes, commiting
-them and pushing these commits to GitLab so the project state is kept in sync.
-
-::: challenge
-
-##### Collaborating over a GitLab project
-
-Start working with your colleagues to whom you have assigned the "Maintainer" role in the previous challenge.
-
-Clone each other's project repos, and make one change to it.
-
-Commit the change, and push it to GitLab.
-
-The other project member should then pull the repo from GitLab, and confirm the change is also present in
-their local repo.
-
-This exercise should take about 5 minutes.
-
-:::
 
 
 
