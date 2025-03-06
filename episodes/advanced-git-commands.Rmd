@@ -387,6 +387,11 @@ Then attempt the pull again.
 ```bash
 $ git pull origin main
 ```
+```output
+Auto-merging guacamole.md
+CONFLICT (content): Merge conflict in guacamole.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -418,11 +423,25 @@ $ cat guacamole.md
 Our change is preceded by `<<<<<<< HEAD`.
 Git has then inserted `=======` as a separator between the conflicting changes
 and marked the end of the content downloaded from GitLab with `>>>>>>>`.
-(The string of letters and digits after that marker
-identifies the commit we've just downloaded.)
+(The string of letters and digits after that marker identifies the commit we've just downloaded.)
 
-It is now up to us to edit this file to remove these markers
-and reconcile the changes.
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+##### Practice using graphical Git tools
+
+Try to solve the conflicts in the *guacamole.md* file using the Git visual tools in PyCharm
+
+:::::::::::::::  solution
+
+##### Solution
+
+![](fig/pycharm_git_conflicts.jpg){alt='Solving merge conflicts using PyCharm'}
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+It is now up to us to edit this file to remove these markers and reconcile the changes.
 We can do anything we want: keep the change made in the local repository, keep
 the change made in the remote repository, write something new to replace both,
 or get rid of the change entirely.
