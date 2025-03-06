@@ -1,5 +1,5 @@
 ---
-title: "Day Two - Introduction"
+title: "Intermezzo"
 ---
 
 The focus of the first workshop of this course has been version control, and an introduction to Git. Some very important Git
@@ -20,7 +20,7 @@ To summarize, this is how this second workshop will be organized:
 - Lunch break
 - Python Virtual Environments
 
-## Required Software {#required}
+### Required Software {#required}
 
 In addition to the software we were using in the previous workshop, for today you will also need the following:
 
