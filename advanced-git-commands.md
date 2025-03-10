@@ -842,11 +842,22 @@ Branches are commonly used as part of a feature-branch workflow, shown in the di
 <p style="text-align: center;">Git feature branches<br>
 Adapted from <a href="https://sillevl.gitbooks.io/git/content/collaboration/workflows/gitflow/" target="_blank">Git Tutorial by sillevl</a> (Creative Commons Attribution 4.0 International License)</p>
 
-In the software development workflow, we typically have a main branch which is the version of the code that is
-tested, stable and reliable. Then, we normally have a development branch (called `develop` or `dev` by convention)
-that we use for work-in-progress code. As we work on adding new features to the code, we create new feature branches
-that first get merged into `develop` after a thorough testing process. After even more testing - `develop` branch will
-get merged into `main`. The points when feature branches are merged to `develop`,
+The *feature branch workflow* is mostly used for software development projects, and consists of the following:
+
+- The `main` branch - which corresponds to the version of the software currently in use. This
+main branch should only contain code that has been thoroughly tested, and is stable and reliable.
+- The `development` branch - which typically contains completed but not yet released code.
+This branch should only contain *working* code (thus - no half-finished features); however
+the code here has not yet been released, so it may be less tested and reliable compared to the `main` branch.
+- A number of `feature` branches - corresponding to various new features being developed for the
+project. Code on these branches does not have to be complete, and is not even expected to always work.
+- Developers work on new functionality on these `feature` branches, by making changes and commiting them
+(the typical modify-add-commit flow). Once a feature is completed, it is tested on its feature branch,
+and once testing is successful, the `feature` branch is *merged* to the `development` branch.
+- After even more testing on the development branch, this branch is then merged to the `main` branch,
+and from there the code is released to users or customers.
+
+It is important to understand that the points when feature branches are merged to `develop`,
 and `develop` to `main` depend entirely on the practice/strategy established in the team.
 For example, for smaller projects (e.g. if you are working alone on a project or in a very small team),
 feature branches sometimes get directly merged into `main` upon testing, skipping the `develop` branch step.
@@ -1006,26 +1017,6 @@ After the initial push of the new branch, each next time we push to it in the us
 $ git push origin develop
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-##### What is the Relationship Between Originating and New Branches?
-
-It is natural to think that new branches have a parent/child relationship with their originating branch, but in actual
-Git terms, branches themselves do not have parents but single commits do. Any commit can have zero parents
-(a root, or initial, commit), one parent (a regular commit), or multiple parents (a merge commit),
-and using this structure, we can build a 'view' of branches from a set of commits and their relationships.
-A common way to look at it is that Git branches are really only
-[lightweight, movable pointers to commits](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell).
-So as a new commit is added to a branch, the branch pointer is moved to the new commit.
-
-What this means is that when you accomplish a merge between two branches, Git is able to determine the common
-'commit ancestor' through the commits in a 'branch', and use that common ancestor to determine which commits need to be
-merged onto the destination branch. It also means that, in theory, you could merge any branch with any other at any
-time... although it may not make sense to do so!
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 &nbsp;
 
 ### Merging Into Main Branch
@@ -1115,7 +1106,7 @@ For now, we advise you to setup informal review rules with your colleagues when 
 
 Once a merge request has been created, GitLab provides process controls for managing its lifecycle:
 
-![](fig/gitlab-merge-request-lifecycle.jpg){alt="Merge Request Lifecycle" .image-with-shadow width="600px"}
+![](fig/gitlab-merge-request-process.jpg){alt="Merge Request Lifecycle" .image-with-shadow width="600px"}
 
 This form can be accessed from the "Merge requests" menu on the left tab. On this form you can perform actions such as:
 - approve the merge request by clicking the "Approve" button.
@@ -1126,7 +1117,52 @@ This form can be accessed from the "Merge requests" menu on the left tab. On thi
 merge request about the comment via email.
 
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
+##### Branch - Merge Request Cycle with Conflicts
+
+For this challenge, again work in Owner - Collaborator pairs
+
+- As the Collaborator - create a new feature branch - `feature_all_caps`
+- On this branch - change the spelling of all *guacamole* ingredients to all caps!
+- Create a merge request in GitLab - requesting to merge your new branch to `develop`
+- After that, as the Owner change the *guacamole* recipe on the `develop` branch:
+    - all ingredients are capitalize (only the first letter!)
+    - commit and push your changes
+- As the Collaborator - check the status of your merge request on GitLab. Is merging still possible?
+- Together fix the `feature_all_caps` branch so merging to develop IS possible
+- Complete the merge request!
+
+:::::::::::::::  solution
+
+##### Solution
+
+After the Owner has made changes to the `develop` branch completing the merge request
+in GitLab is no longer possible - as GitLab notices there is a conflict between `develop`
+and the `feature_all_caps` branches:
+
+![](fig/gitlab_mr_conflicts.jpg){alt='Merge Request blocked because of conflicts'}
+
+The trick to solving these conflicts is to manually merge the `develop` branch into
+the `feature_all_caps` branch:
+
+```bash
+$ git merge develop
+```
+
+Once you have done that, git will indicate there are merge conflicts - which you can
+solve the same way you did earlier - for example using the PyCharm git interface.
+
+Once conflicts have been solved, commit them (on the `feature_all_caps` branch)
+and push everything to GitLab.
+
+Now, if you refresh the Merge Request page on GitLab you should see that merging is
+possible!
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
@@ -1152,18 +1188,6 @@ merge request about the comment via email.
 &nbsp;
 &nbsp;
 
-
-
-## Hands-on Project
-
-- Work in groups of two
-- Create a GitLab project on the TUD GitLab server
-- Assign project roles to each team member
-- Create a shared (text) document representing a joint research paper.
-- Each member works independently on different sections of the document in separate branches.
-- Show how merging can be done without conflicts
-- Start working on the same section creating a conflict
-- show how it can be solved using GitLab merge requests and Git conflict resolution
 
 &nbsp;
 &nbsp;
