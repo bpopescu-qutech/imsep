@@ -264,7 +264,6 @@
         <ul><li><a href="#collaborating">Collaborating</a></li>
 <li><a href="#solving-conflicts">Solving Conflicts</a></li>
 <li><a href="#git-branches">Git Branches</a></li>
-<li><a href="#hands-on-project">Hands-on Project</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -356,7 +355,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Advanced Git Commands</h1>
-        <p>Last updated on 2025-03-06 |
+        <p>Last updated on 2025-03-10 |
 
         <a href="https://github.com/QuTech-Delft/prosoftdev-research/edit/main/episodes/advanced-git-commands.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -1336,15 +1335,31 @@ Git feature branches<br> Adapted from
 Tutorial by sillevl</a> (Creative Commons Attribution 4.0 International
 License)
 </p>
-<p>In the software development workflow, we typically have a main branch
-which is the version of the code that is tested, stable and reliable.
-Then, we normally have a development branch (called <code>develop</code>
-or <code>dev</code> by convention) that we use for work-in-progress
-code. As we work on adding new features to the code, we create new
-feature branches that first get merged into <code>develop</code> after a
-thorough testing process. After even more testing - <code>develop</code>
-branch will get merged into <code>main</code>. The points when feature
-branches are merged to <code>develop</code>, and <code>develop</code> to
+<p>The <em>feature branch workflow</em> is mostly used for software
+development projects, and consists of the following:</p>
+<ul><li>The <code>main</code> branch - which corresponds to the version of
+the software currently in use. This main branch should only contain code
+that has been thoroughly tested, and is stable and reliable.</li>
+<li>The <code>development</code> branch - which typically contains
+completed but not yet released code. This branch should only contain
+<em>working</em> code (thus - no half-finished features); however the
+code here has not yet been released, so it may be less tested and
+reliable compared to the <code>main</code> branch.</li>
+<li>A number of <code>feature</code> branches - corresponding to various
+new features being developed for the project. Code on these branches
+does not have to be complete, and is not even expected to always
+work.</li>
+<li>Developers work on new functionality on these <code>feature</code>
+branches, by making changes and commiting them (the typical
+modify-add-commit flow). Once a feature is completed, it is tested on
+its feature branch, and once testing is successful, the
+<code>feature</code> branch is <em>merged</em> to the
+<code>development</code> branch.</li>
+<li>After even more testing on the development branch, this branch is
+then merged to the <code>main</code> branch, and from there the code is
+released to users or customers.</li>
+</ul><p>It is important to understand that the points when feature branches
+are merged to <code>develop</code>, and <code>develop</code> to
 <code>main</code> depend entirely on the practice/strategy established
 in the team. For example, for smaller projects (e.g. if you are working
 alone on a project or in a very small team), feature branches sometimes
@@ -1534,32 +1549,6 @@ it in the usual manner (i.e. without the <code>-u</code> switch):</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="ex">$</span> git push origin develop</span></code></pre>
 </div>
-<div id="what-is-the-relationship-between-originating-and-new-branches" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<div id="what-is-the-relationship-between-originating-and-new-branches" class="callout-inner">
-<h3 class="callout-title">What is the Relationship Between Originating and New Branches?</h3>
-<div class="callout-content">
-<p>It is natural to think that new branches have a parent/child
-relationship with their originating branch, but in actual Git terms,
-branches themselves do not have parents but single commits do. Any
-commit can have zero parents (a root, or initial, commit), one parent (a
-regular commit), or multiple parents (a merge commit), and using this
-structure, we can build a ‘view’ of branches from a set of commits and
-their relationships. A common way to look at it is that Git branches are
-really only <a href="https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell" class="external-link">lightweight,
-movable pointers to commits</a>. So as a new commit is added to a
-branch, the branch pointer is moved to the new commit.</p>
-<p>What this means is that when you accomplish a merge between two
-branches, Git is able to determine the common ‘commit ancestor’ through
-the commits in a ‘branch’, and use that common ancestor to determine
-which commits need to be merged onto the destination branch. It also
-means that, in theory, you could merge any branch with any other at any
-time… although it may not make sense to do so!</p>
-</div>
-</div>
-</div>
 <p> </p>
 </div>
 <div class="section level3">
@@ -1667,7 +1656,7 @@ to setup informal review rules with your colleagues when working on a
 joint project.</p>
 <p>Once a merge request has been created, GitLab provides process
 controls for managing its lifecycle:</p>
-<figure><img src="fig/gitlab-merge-request-lifecycle.jpg" class="image-with-shadow figure mx-auto d-block" alt="Merge Request Lifecycle" width="600"></figure><p>This form can be accessed from the “Merge requests” menu on the left
+<figure><img src="fig/gitlab-merge-request-process.jpg" class="image-with-shadow figure mx-auto d-block" alt="Merge Request Lifecycle" width="600"></figure><p>This form can be accessed from the “Merge requests” menu on the left
 tab. On this form you can perform actions such as: - approve the merge
 request by clicking the “Approve” button. - do the actual (Git) merge by
 clicking the “Merge” button. - review the commits part of this merge
@@ -1675,6 +1664,65 @@ request in the “Commits” tab - review the code changes part of this
 merge request in the “Changes” tab - comment on code changes, also from
 the “Changes” tab. When making a comment, GitLab notifies the asignee
 for the merge request about the comment via email.</p>
+<div id="branch---merge-request-cycle-with-conflicts" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="branch---merge-request-cycle-with-conflicts" class="callout-inner">
+<h3 class="callout-title">Branch - Merge Request Cycle with Conflicts</h3>
+<div class="callout-content">
+<p>For this challenge, again work in Owner - Collaborator pairs</p>
+<ul><li>As the Collaborator - create a new feature branch -
+<code>feature_all_caps</code>
+</li>
+<li>On this branch - change the spelling of all <em>guacamole</em>
+ingredients to all caps!</li>
+<li>Create a merge request in GitLab - requesting to merge your new
+branch to <code>develop</code>
+</li>
+<li>After that, as the Owner change the <em>guacamole</em> recipe on the
+<code>develop</code> branch:
+<ul><li>all ingredients are capitalize (only the first letter!)</li>
+<li>commit and push your changes</li>
+</ul></li>
+<li>As the Collaborator - check the status of your merge request on
+GitLab. Is merging still possible?</li>
+<li>Together fix the <code>feature_all_caps</code> branch so merging to
+develop IS possible</li>
+<li>Complete the merge request!</li>
+</ul></div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div class="accordion-body">
+<p>After the Owner has made changes to the <code>develop</code> branch
+completing the merge request in GitLab is no longer possible - as GitLab
+notices there is a conflict between <code>develop</code> and the
+<code>feature_all_caps</code> branches:</p>
+<figure><img src="fig/gitlab_mr_conflicts.jpg" alt="Merge Request blocked because of conflicts" class="figure mx-auto d-block"></figure><p>The trick to solving these conflicts is to manually merge the
+<code>develop</code> branch into the <code>feature_all_caps</code>
+branch:</p>
+<div class="codewrapper sourceCode" id="cb77">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a><span class="ex">$</span> git merge develop</span></code></pre>
+</div>
+<p>Once you have done that, git will indicate there are merge conflicts
+- which you can solve the same way you did earlier - for example using
+the PyCharm git interface.</p>
+<p>Once conflicts have been solved, commit them (on the
+<code>feature_all_caps</code> branch) and push everything to GitLab.</p>
+<p>Now, if you refresh the Merge Request page on GitLab you should see
+that merging is possible!</p>
+</div>
+</div>
+</div>
+</div>
 <p>   </p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -1702,24 +1750,12 @@ branch merging</li>
 </div>
 </div>
 <p>   </p>
-</div>
-</section><section><h2 class="section-heading" id="hands-on-project">Hands-on Project<a class="anchor" aria-label="anchor" href="#hands-on-project"></a></h2>
-<hr class="half-width"><ul><li>Work in groups of two</li>
-<li>Create a GitLab project on the TUD GitLab server</li>
-<li>Assign project roles to each team member</li>
-<li>Create a shared (text) document representing a joint research
-paper.</li>
-<li>Each member works independently on different sections of the
-document in separate branches.</li>
-<li>Show how merging can be done without conflicts</li>
-<li>Start working on the same section creating a conflict</li>
-<li>show how it can be solved using GitLab merge requests and Git
-conflict resolution</li>
-</ul><p>   </p>
+<p>   </p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="gitlab.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
@@ -1777,9 +1813,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://QuTech-Delft.github.io/prosoftdev-research/advanced-git-commands.html",
   "identifier": "https://QuTech-Delft.github.io/prosoftdev-research/advanced-git-commands.html",
-  "dateCreated": "2025-03-06",
-  "dateModified": "2025-03-06",
-  "datePublished": "2025-03-06"
+  "dateCreated": "2025-03-10",
+  "dateModified": "2025-03-10",
+  "datePublished": "2025-03-10"
 }
 
   </script><script>
