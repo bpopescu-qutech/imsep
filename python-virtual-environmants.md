@@ -25,11 +25,11 @@ exercises: 20
 
 ## Introduction
 
-Up to now in this course we have focused on version control and git. We have seen how these
+Up to now in this course we have focused on version control and `git`. We have seen how these
 tools provide isolation, reproducibility, and control over changes at the *source code* level.
 
 However a running program is more than just its source code; the environment/OS where it runs,
-the version of the programming language used, as well as the external libraries it is using can also
+the version of the programming language, as well as the external libraries it is using can also
 have a significant influence over its results.
 
 In this episode we will pivot away from version control, and start looking at these other "externalities"
@@ -87,7 +87,7 @@ from different virtual environments.
 
 ## Tools for Managing Python Virtual Environments and External Packages
 
-There are several commonly used command line tools for managing Python virtual environments:
+There are several commonly used command line tools for creating and managing Python virtual environments:
 
 - `venv`, available by default from the standard `Python` distribution from `Python 3.3+`
 - `virtualenv`, needs to be installed separately but supports both `Python 2.7+` and `Python 3.3+`versions
@@ -96,16 +96,15 @@ There are several commonly used command line tools for managing Python virtual e
   (also included as part of the Anaconda Python distribution often used by the scientific community)
 - `poetry`, a modern Python packaging tool which handles virtual environments automatically
 
-While there are pros and cons for using each of the above, all will do the job of managing Python virtual environments
-for you and it may be a matter of personal preference which one you go for. In this course, we will use `venv` to
-create and manage our virtual environment (which is the preferred way for Python 3.3+).
-The upside is that `venv` virtual environments created from the command line are
-also recognised and picked up automatically by PyCharm IDE, as we will see in the next episode.
-
 Part of managing your (virtual) working environment involves installing, updating and removing external packages on
-your system. The Python package manager tool `pip` is most commonly used for this - it interacts and obtains the
-packages from the central repository called [Python Package Index (PyPI)](https://pypi.org/).
-`pip` can now be used with all Python distributions (including Anaconda).
+your system. Here as well there are plenty of tools and technologies to choose from:
+
+- `pip` - the most commonly used Python package manager - it interacts and obtains the
+packages from the central repository called [Python Package Index (PyPI)](https://pypi.org/)
+- `easy_install` - a legacy package manager now largely replaced by `pip`
+- `pdm` - a modern Python package manager that follows the latest Python community guidelines, but doesn't enforce virtual environments
+- `conda`
+- `poetry`
 
 ### Many Tools for the Job
 
@@ -530,11 +529,28 @@ different, depending on the version of the packages you have installed, as well 
 that they themselves use.
 
 The `requirements.txt` file can then be added/committed to the Git repo for your project and get shipped as part of
-your software and shared with collaborators and/or users. They can then replicate your environment and install all the
-necessary packages from the project root as follows:
+your software and shared with collaborators and/or users.
+
+To see how this `requirements.txt` can be used to re-create a virtual environment, let us practice creating an
+identical copy of our first virtual environment in a different directory. Let us first create a new
+virtual environment - `venv_copy` - like this:
 
 ```bash
-(venv) $ python -m pip install -r requirements.txt
+$ deactivate
+$ cd ..
+$ mkdir venv_copy
+$ cd venv_copy
+$ python -m venv venv_copy
+$ source venv_copy/bin/activate
+(venv_copy) $
+```
+
+They can then replicate your original environment and install all the original packages by first
+copying the `requirements.txt` to the new virtual environment root directory, and then running
+a version of the `pip install` command:
+
+```bash
+(venv_copy) $ python -m pip install -r requirements.txt
 ```
 
 As your project grows - you may need to update your environment for a variety of reasons. For example, one of your
@@ -554,7 +570,7 @@ Also check out the guide
 ["Installing packages using `pip` and virtual environments"](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#installing-packages-using-pip-and-virtual-environments).
 :::
 
-## Running Python Scripts From Command Line
+## Putting it All Together
 Congratulations! Your environment is now activated and set up to run our `plot_sine_wave.py` program from the command line.
 
 You should already be located in the root of the `sine_wave` directory (if not, please navigate to it from the command line now).
