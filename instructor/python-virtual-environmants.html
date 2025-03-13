@@ -277,7 +277,7 @@ Packages</a></li>
 <li><a href="#a-motivating-example">A Motivating Example</a></li>
 <li><a href="#creating-virtual-environments-using-venv">Creating Virtual Environments Using <code>venv</code></a></li>
 <li><a href="#installing-external-packages-using-pip">Installing External Packages Using <code>pip</code></a></li>
-<li><a href="#running-python-scripts-from-command-line">Running Python Scripts From Command Line</a></li>
+<li><a href="#putting-it-all-together">Putting it All Together</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -360,7 +360,7 @@ Packages</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Python Virtual Environments</h1>
-        <p>Last updated on 2025-03-11 |
+        <p>Last updated on 2025-03-13 |
 
         <a href="https://github.com/QuTech-Delft/prosoftdev-research/edit/main/episodes/python-virtual-environmants.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -405,12 +405,13 @@ should use them?</li>
 </div>
 </div>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
-<hr class="half-width"><p>Up to now in this course we have focused on version control and git.
-We have seen how these tools provide isolation, reproducibility, and
-control over changes at the <em>source code</em> level.</p>
+<hr class="half-width"><p>Up to now in this course we have focused on version control and
+<code>git</code>. We have seen how these tools provide isolation,
+reproducibility, and control over changes at the <em>source code</em>
+level.</p>
 <p>However a running program is more than just its source code; the
-environment/OS where it runs, the version of the programming language
-used, as well as the external libraries it is using can also have a
+environment/OS where it runs, the version of the programming language,
+as well as the external libraries it is using can also have a
 significant influence over its results.</p>
 <p>In this episode we will pivot away from version control, and start
 looking at these other “externalities” that influence program behaviour.
@@ -481,8 +482,8 @@ virtual environments.</p>
 </div>
 </section><section><h2 class="section-heading" id="tools-for-managing-python-virtual-environments-and-external-packages">Tools for Managing Python Virtual Environments and External
 Packages<a class="anchor" aria-label="anchor" href="#tools-for-managing-python-virtual-environments-and-external-packages"></a></h2>
-<hr class="half-width"><p>There are several commonly used command line tools for managing
-Python virtual environments:</p>
+<hr class="half-width"><p>There are several commonly used command line tools for creating and
+managing Python virtual environments:</p>
 <ul><li>
 <code>venv</code>, available by default from the standard
 <code>Python</code> distribution from <code>Python 3.3+</code>
@@ -502,22 +503,25 @@ scientific community)</li>
 <li>
 <code>poetry</code>, a modern Python packaging tool which handles
 virtual environments automatically</li>
-</ul><p>While there are pros and cons for using each of the above, all will
-do the job of managing Python virtual environments for you and it may be
-a matter of personal preference which one you go for. In this course, we
-will use <code>venv</code> to create and manage our virtual environment
-(which is the preferred way for Python 3.3+). The upside is that
-<code>venv</code> virtual environments created from the command line are
-also recognised and picked up automatically by PyCharm IDE, as we will
-see in the next episode.</p>
-<p>Part of managing your (virtual) working environment involves
-installing, updating and removing external packages on your system. The
-Python package manager tool <code>pip</code> is most commonly used for
-this - it interacts and obtains the packages from the central repository
-called <a href="https://pypi.org/" class="external-link">Python Package Index (PyPI)</a>.
-<code>pip</code> can now be used with all Python distributions
-(including Anaconda).</p>
-<div class="section level3">
+</ul><p>Part of managing your (virtual) working environment involves
+installing, updating and removing external packages on your system. Here
+as well there are plenty of tools and technologies to choose from:</p>
+<ul><li>
+<code>pip</code> - the most commonly used Python package manager -
+it interacts and obtains the packages from the central repository called
+<a href="https://pypi.org/" class="external-link">Python Package Index (PyPI)</a>
+</li>
+<li>
+<code>easy_install</code> - a legacy package manager now largely
+replaced by <code>pip</code>
+</li>
+<li>
+<code>pdm</code> - a modern Python package manager that follows the
+latest Python community guidelines, but doesn’t enforce virtual
+environments</li>
+<li><code>conda</code></li>
+<li><code>poetry</code></li>
+</ul><div class="section level3">
 <h3 id="many-tools-for-the-job">Many Tools for the Job<a class="anchor" aria-label="anchor" href="#many-tools-for-the-job"></a></h3>
 <p>Installing and managing Python distributions, external libraries and
 virtual environments is, well, complex. There is an abundance of tools
@@ -1058,13 +1062,31 @@ have installed, as well as any differences in the packages that they
 themselves use.</p>
 <p>The <code>requirements.txt</code> file can then be added/committed to
 the Git repo for your project and get shipped as part of your software
-and shared with collaborators and/or users. They can then replicate your
-environment and install all the necessary packages from the project root
-as follows:</p>
+and shared with collaborators and/or users.</p>
+<p>To see how this <code>requirements.txt</code> can be used to
+re-create a virtual environment, let us practice creating an identical
+copy of our first virtual environment in a different directory. Let us
+first create a new virtual environment - <code>venv_copy</code> - like
+this:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">$</span> python <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="ex">$</span> deactivate</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="ex">$</span> cd ..</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="ex">$</span> mkdir venv_copy</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="ex">$</span> cd venv_copy</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-m</span> venv venv_copy</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="ex">$</span> source venv_copy/bin/activate</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv_copy</span><span class="kw">)</span> <span class="ex">$</span></span></code></pre>
+</div>
+<p>They can then replicate your original environment and install all the
+original packages by first copying the <code>requirements.txt</code> to
+the new virtual environment root directory, and then running a version
+of the <code>pip install</code> command:</p>
+<div class="codewrapper sourceCode" id="cb28">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv_copy</span><span class="kw">)</span> <span class="ex">$</span> python <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span></code></pre>
 </div>
 <p>As your project grows - you may need to update your environment for a
 variety of reasons. For example, one of your project’s dependencies has
@@ -1094,16 +1116,16 @@ packages using <code>pip</code> and virtual environments”</a>.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="running-python-scripts-from-command-line">Running Python Scripts From Command Line<a class="anchor" aria-label="anchor" href="#running-python-scripts-from-command-line"></a></h2>
+</section><section><h2 class="section-heading" id="putting-it-all-together">Putting it All Together<a class="anchor" aria-label="anchor" href="#putting-it-all-together"></a></h2>
 <hr class="half-width"><p>Congratulations! Your environment is now activated and set up to run
 our <code>plot_sine_wave.py</code> program from the command line.</p>
 <p>You should already be located in the root of the
 <code>sine_wave</code> directory (if not, please navigate to it from the
 command line now). When you run this program from the command line:</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">$</span> python plot_sine_wave.py</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="kw">(</span><span class="ex">venv</span><span class="kw">)</span> <span class="ex">$</span> python plot_sine_wave.py</span></code></pre>
 </div>
 <p>You should now see the following plot:</p>
 <figure><img src="../fig/sine_wave.jpg" class="image-with-shadow figure mx-auto d-block" alt="Sine Wave Plot" width="600"></figure><div id="multiple-python-versions-on-the-same-machine" class="callout discussion">
@@ -1209,9 +1231,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://QuTech-Delft.github.io/prosoftdev-research/instructor/python-virtual-environmants.html",
   "identifier": "https://QuTech-Delft.github.io/prosoftdev-research/instructor/python-virtual-environmants.html",
-  "dateCreated": "2025-03-11",
-  "dateModified": "2025-03-11",
-  "datePublished": "2025-03-11"
+  "dateCreated": "2025-03-13",
+  "dateModified": "2025-03-13",
+  "datePublished": "2025-03-13"
 }
 
   </script><script>
