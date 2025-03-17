@@ -1299,20 +1299,155 @@ By using such visual tools you can quickly zoom on untested parts of your codeba
 for covering them.
 
 
-## Clean Code/Refactoring Exercise
+## Final Project
 
-Interactive coding exercise which can be done individually or in small groups:
+In this last hour of the last workshop of this course, you will get the chance to apply most of the material covered
+in this course in a final project. For this final project we will be using this Python program, which is an expanded
+version of a challenge you have already seen earlier in this course:
 
-- Introduce a small to medium size Python program specifically crafted to break all clean code rules outlined in this episode.
-- Participants are instructed to run PyLint on this program - the score will be extremely low!
-- Goal of this exercise is to refactor the code to bring the score above 8
-- Before starting this process, unit tests should be added.
-- Participants should run the *coverage.py* tool on their tests and ensure the critical paths in the code are covered
-- Once test coverage is achieved, start re-factoring, applying the clean code techniques learned in this episode
-- After each refactoring, the unit tests should pass, which ensures functionality has not been broken.
-- After each refactoring, participants should re-run the linter, and see how the code score improves.
+```python
+# Dummy calibration function - operations shown here have no "real life" meaning
+def calibrate_fridge(fridge_data, include_safety_checks):
+    fridge_id = fridge_data.get("id")
+    current_temp = fridge_data.get("current_temperature")
+    target_temp = fridge_data.get("target_temperature")
+    calibration_params = fridge_data.get("calibration_params")
+    experiment_params = fridge_data.get("experiment_params")
+
+    if include_safety_checks:
+        if current_temp > calibration_params.get("max_safe_temperature"):
+            raise Exception("Unsafe temperature detected during calibration.")
+        if target_temp < calibration_params.get("min_safe_temperature"):
+            raise Exception("Unsafe target temperature detected during calibration.")
+
+    adjustment_factor = calibration_params.get("adjustment_factor", 1.0)
+    adjusted_temp = current_temp + (target_temp - current_temp) * adjustment_factor
+    if adjusted_temp > calibration_params["max_safe_temperature"]:
+        adjusted_temp = calibration_params["max_safe_temperature"]
+    if adjusted_temp < calibration_params["min_safe_temperature"]:
+        adjusted_temp = calibration_params["min_safe_temperature"]
+
+    stabilization_steps = calibration_params.get("stabilization_steps", 10)
+    operating_temperature = adjusted_temp
+    for step in range(stabilization_steps):
+        correction_factor = 0.1 * (operating_temperature - target_temp)
+        operating_temperature -= correction_factor
+
+        if operating_temperature < target_temp:
+            operating_temperature += 0.05  # Minor correction if under target
+        elif operating_temperature > target_temp:
+            operating_temperature -= 0.05  # Minor correction if above target
+
+        temperature_variance = abs(operating_temperature - target_temp)
+        if temperature_variance < 0.01:
+            break  # Break early if within small tolerance
+        operating_temperature -= 0.01 * temperature_variance
+
+    telemetry_data = {
+        "fridge_id": fridge_id,
+        "adjusted_temp": adjusted_temp,
+        "safety_checks": include_safety_checks,
+        "operating_temperature": operating_temperature
+    }
+
+    print(f"Telemetry data: {telemetry_data}")
+
+    # Experiment calibration logic
+    scaling_factor = experiment_params.get("scaling_factor", 1.2)
+    offset_value = experiment_params.get("offset_value", 3)
+    smoothing_coefficient = experiment_params.get("smoothing_coefficient", 0.8)
+    window_size = experiment_params.get("window_size", 5)
+    modulation_factor = experiment_params.get("modulation_factor", 0.05)
+    experiment_data = fridge_data.get("experiment_data", [])
+
+    if len(experiment_data) != 20:
+        raise ValueError("Calibration data must have exactly 20 readings")
+
+    experiment_data = np.array(experiment_data)
+    scaled_data = experiment_data * scaling_factor - offset_value
+    smoothed_data = np.convolve(scaled_data, np.ones(window_size) / window_size, mode='valid')
+    adjusted_data = smoothed_data * (1 + modulation_factor * np.sin(smoothed_data))
+    experiment_temperature_adjustment = np.tanh(
+        np.average(adjusted_data, weights=np.linspace(1, 2, len(adjusted_data))) / 10)
+
+    experiment_temperature = operating_temperature + experiment_temperature_adjustment
+
+    experiment_outputs = {
+        "mean_before_adjustment": np.mean(experiment_data),
+        "std_dev_before_adjustment": np.std(experiment_data),
+        "mean_after_adjustment": np.mean(adjusted_data),
+        "experiment_temperature_adjustment": experiment_temperature_adjustment,
+        "calibration_factor": scaling_factor * smoothing_coefficient / (1 + abs(modulation_factor)),
+        "experiment_temperature": experiment_temperature
+    }
+
+    return telemetry_data, experiment_outputs
 
 
+def main():
+    fridge_data = {
+        "id": "fridge123",
+        "current_temperature": 5.0,
+        "target_temperature": 2.85,
+        "calibration_params": {
+            "max_safe_temperature": 6.8,
+            "min_safe_temperature": 2.1,
+            "adjustment_factor": 1.05,
+            "stabilization_steps": 10
+        },
+        "experiment_params": {
+            "scaling_factor": 1.1,
+            "offset_value": 2,
+            "smoothing_coefficient": 0.9,
+            "window_size": 3,
+            "modulation_factor": 0.03
+        },
+        "experiment_data": [10.1, -6.8, 9.8, -10.3, -9.9, 12.0, 10.1, 10.2, 10.1, 9.7, -15.1,
+                            8.1, 1-1.2, 10.3, 10.0, 10.1, 7.2, 9.8, 9.9, -9.7]
+    }
+
+    include_safety_checks = True
+
+    # Run the function
+    telemetry_data, experiment_outputs = calibrate_fridge(fridge_data, include_safety_checks)
+
+    # Print results
+    print("Telemetry Data:", telemetry_data)
+    print("Experiment Outputs:", experiment_outputs)
+
+# Run main function
+if __name__ == "__main__":
+    main()
+
+
+```
+Given this code, the challenge/final project of this course is the following:
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+##### Final Project
+
+1. The code shown above is available [here](https://gitlab.tudelft.nl/bcpopescu/imsep_final_project/)
+    - clone this repo on your local machine
+    - create a separate branch `final_project_<username>` where you will do your work
+2. In your local working directory for this project, create a new Python 3.12 virtual environment
+and activate it.
+3. Install all necessary packages and run the calibration function
+4. Start creating unit tests for the calibration function. Assume the calibration function *as given* is correct.
+5. Run the unit tests, and check the code coverage; keep adding unit tests until you have a very high code
+coverage - you should aim for 100%!
+6. Run your code through `pylint`. Note the issues `pylint` identifies in your code, and its initial score.
+7. Start refactoring the code - taking into account `pylint's` findings, and applying all techniques you have
+learned in this workshop.
+    - Make a plan of what you want to refactor, and in which order.
+    - Use the PyCharm refactoring tools to help you speed up this process.
+    - Work in small steps; after each refactoring step re-run the unit tests and make sure they pass!
+    - If tests start to fail - fix them; if you get stuck, use git to restore your code to a version
+    where the tests were passing, and re-start from there.
+    - After each successful refactoring step commit your changes to git.
+    - After each refactoring step, re-run `pylint` and notice how your score is improving.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
