@@ -1,5 +1,5 @@
 ---
-title: "Intermezzo"
+title: "Intermezzo I"
 ---
 
 The focus of the first workshop of this course has been version control, and an introduction to Git. Some very important Git

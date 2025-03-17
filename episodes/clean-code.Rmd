@@ -93,14 +93,38 @@ In this section, we will cover some basic rules that, when followed, lead to cle
 that these rules are just the "tip of the iceberg," as there is much more to explore on this topic. However, adhering to
 these simple guidelines can significantly improve the quality of your code. As you grow into a more experienced developer
 and adopt advanced software techniques, it remains valuable to stay aligned with "clean code" principles relevant to
-these practices. Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin is often regarded as the
+these practices. **Clean Code: A Handbook of Agile Software Craftsmanship** by Robert C. Martin is often regarded as the
 definitive guide for the clean code movement and is highly recommended reading.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+##### Working with code samples
+
+In this workshop you will be presented many small code samples (snippets); sometimes you will
+be asked to re-factor them. To keep things neat, we advise keep all these samples
+in separate source files (e.g. `example01.py`, `example02.py`, etc.) and place them under a
+common `clean_code` directory. Furthermore, to ensure isolation, you should also create a
+separate virtual environment for all the coding in this workshop:
+
+```bash
+$ mkdir clean_code
+$ cd clean_code
+$ python -m venv venv
+$ source venv/bin/activate
+(venv) $
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ### General Rules
 
-- Follow standard conventions.
+- Follow standard conventions. Find a standard that suits you, and stick to it! For example:
+    - [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
+    - [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 - Keep it simple stupid. Simpler is always better. Reduce complexity as much as possible.
 - Boy scout rule. Leave the campground cleaner than you found it.
+
 
 ### Source code structure
 
@@ -690,7 +714,7 @@ total = price * quantity  # Multiply price by quantity
 
 ``` python
 # BAD
-# This function sorts the list in descending order
+# This function sorts the list in ascending order
 def sort_list(data):
     return sorted(data, reverse=True)
 
@@ -766,6 +790,9 @@ def delete_experiment_data(experiment_id):
 
 
 ### Unit Test Rules
+
+Unit tests verify the functionality of individual components or functions in a program. They help detect bugs early by
+isolating and testing small code units. Typically, they are written using testing frameworks like `Pytest` or `PyUnit`.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
