@@ -291,7 +291,7 @@
         <ul><li><a href="#introduction">Introduction</a></li>
 <li><a href="#clean-code-rules">Clean Code Rules</a></li>
 <li><a href="#clean-code-tools">Clean Code Tools</a></li>
-<li><a href="#clean-coderefactoring-exercise">Clean Code/Refactoring Exercise</a></li>
+<li><a href="#final-project">Final Project</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -1901,28 +1901,177 @@ your codebase, so that you can add additional tests for covering
 them.</p>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="clean-coderefactoring-exercise">Clean Code/Refactoring Exercise<a class="anchor" aria-label="anchor" href="#clean-coderefactoring-exercise"></a></h2>
-<hr class="half-width"><p>Interactive coding exercise which can be done individually or in
-small groups:</p>
-<ul><li>Introduce a small to medium size Python program specifically crafted
-to break all clean code rules outlined in this episode.</li>
-<li>Participants are instructed to run PyLint on this program - the
-score will be extremely low!</li>
-<li>Goal of this exercise is to refactor the code to bring the score
-above 8</li>
-<li>Before starting this process, unit tests should be added.</li>
-<li>Participants should run the <em>coverage.py</em> tool on their tests
-and ensure the critical paths in the code are covered</li>
-<li>Once test coverage is achieved, start re-factoring, applying the
-clean code techniques learned in this episode</li>
-<li>After each refactoring, the unit tests should pass, which ensures
-functionality has not been broken.</li>
-<li>After each refactoring, participants should re-run the linter, and
-see how the code score improves.</li>
-</ul><!--
+</section><section><h2 class="section-heading" id="final-project">Final Project<a class="anchor" aria-label="anchor" href="#final-project"></a></h2>
+<hr class="half-width"><p>In this last hour of the last workshop of this course, you will get
+the chance to apply most of the material covered in this course in a
+final project. For this final project we will be using this Python
+program, which is an expanded version of a challenge you have already
+seen earlier in this course:</p>
+<div class="codewrapper sourceCode" id="cb45">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co"># Dummy calibration function - operations shown here have no "real life" meaning</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="kw">def</span> calibrate_fridge(fridge_data, include_safety_checks):</span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>    fridge_id <span class="op">=</span> fridge_data.get(<span class="st">"id"</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>    current_temp <span class="op">=</span> fridge_data.get(<span class="st">"current_temperature"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a>    target_temp <span class="op">=</span> fridge_data.get(<span class="st">"target_temperature"</span>)</span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a>    calibration_params <span class="op">=</span> fridge_data.get(<span class="st">"calibration_params"</span>)</span>
+<span id="cb45-7"><a href="#cb45-7" tabindex="-1"></a>    experiment_params <span class="op">=</span> fridge_data.get(<span class="st">"experiment_params"</span>)</span>
+<span id="cb45-8"><a href="#cb45-8" tabindex="-1"></a></span>
+<span id="cb45-9"><a href="#cb45-9" tabindex="-1"></a>    <span class="cf">if</span> include_safety_checks:</span>
+<span id="cb45-10"><a href="#cb45-10" tabindex="-1"></a>        <span class="cf">if</span> current_temp <span class="op">&gt;</span> calibration_params.get(<span class="st">"max_safe_temperature"</span>):</span>
+<span id="cb45-11"><a href="#cb45-11" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Unsafe temperature detected during calibration."</span>)</span>
+<span id="cb45-12"><a href="#cb45-12" tabindex="-1"></a>        <span class="cf">if</span> target_temp <span class="op">&lt;</span> calibration_params.get(<span class="st">"min_safe_temperature"</span>):</span>
+<span id="cb45-13"><a href="#cb45-13" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Unsafe target temperature detected during calibration."</span>)</span>
+<span id="cb45-14"><a href="#cb45-14" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" tabindex="-1"></a>    adjustment_factor <span class="op">=</span> calibration_params.get(<span class="st">"adjustment_factor"</span>, <span class="fl">1.0</span>)</span>
+<span id="cb45-16"><a href="#cb45-16" tabindex="-1"></a>    adjusted_temp <span class="op">=</span> current_temp <span class="op">+</span> (target_temp <span class="op">-</span> current_temp) <span class="op">*</span> adjustment_factor</span>
+<span id="cb45-17"><a href="#cb45-17" tabindex="-1"></a>    <span class="cf">if</span> adjusted_temp <span class="op">&gt;</span> calibration_params[<span class="st">"max_safe_temperature"</span>]:</span>
+<span id="cb45-18"><a href="#cb45-18" tabindex="-1"></a>        adjusted_temp <span class="op">=</span> calibration_params[<span class="st">"max_safe_temperature"</span>]</span>
+<span id="cb45-19"><a href="#cb45-19" tabindex="-1"></a>    <span class="cf">if</span> adjusted_temp <span class="op">&lt;</span> calibration_params[<span class="st">"min_safe_temperature"</span>]:</span>
+<span id="cb45-20"><a href="#cb45-20" tabindex="-1"></a>        adjusted_temp <span class="op">=</span> calibration_params[<span class="st">"min_safe_temperature"</span>]</span>
+<span id="cb45-21"><a href="#cb45-21" tabindex="-1"></a></span>
+<span id="cb45-22"><a href="#cb45-22" tabindex="-1"></a>    stabilization_steps <span class="op">=</span> calibration_params.get(<span class="st">"stabilization_steps"</span>, <span class="dv">10</span>)</span>
+<span id="cb45-23"><a href="#cb45-23" tabindex="-1"></a>    operating_temperature <span class="op">=</span> adjusted_temp</span>
+<span id="cb45-24"><a href="#cb45-24" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(stabilization_steps):</span>
+<span id="cb45-25"><a href="#cb45-25" tabindex="-1"></a>        correction_factor <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> (operating_temperature <span class="op">-</span> target_temp)</span>
+<span id="cb45-26"><a href="#cb45-26" tabindex="-1"></a>        operating_temperature <span class="op">-=</span> correction_factor</span>
+<span id="cb45-27"><a href="#cb45-27" tabindex="-1"></a></span>
+<span id="cb45-28"><a href="#cb45-28" tabindex="-1"></a>        <span class="cf">if</span> operating_temperature <span class="op">&lt;</span> target_temp:</span>
+<span id="cb45-29"><a href="#cb45-29" tabindex="-1"></a>            operating_temperature <span class="op">+=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if under target</span></span>
+<span id="cb45-30"><a href="#cb45-30" tabindex="-1"></a>        <span class="cf">elif</span> operating_temperature <span class="op">&gt;</span> target_temp:</span>
+<span id="cb45-31"><a href="#cb45-31" tabindex="-1"></a>            operating_temperature <span class="op">-=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if above target</span></span>
+<span id="cb45-32"><a href="#cb45-32" tabindex="-1"></a></span>
+<span id="cb45-33"><a href="#cb45-33" tabindex="-1"></a>        temperature_variance <span class="op">=</span> <span class="bu">abs</span>(operating_temperature <span class="op">-</span> target_temp)</span>
+<span id="cb45-34"><a href="#cb45-34" tabindex="-1"></a>        <span class="cf">if</span> temperature_variance <span class="op">&lt;</span> <span class="fl">0.01</span>:</span>
+<span id="cb45-35"><a href="#cb45-35" tabindex="-1"></a>            <span class="cf">break</span>  <span class="co"># Break early if within small tolerance</span></span>
+<span id="cb45-36"><a href="#cb45-36" tabindex="-1"></a>        operating_temperature <span class="op">-=</span> <span class="fl">0.01</span> <span class="op">*</span> temperature_variance</span>
+<span id="cb45-37"><a href="#cb45-37" tabindex="-1"></a></span>
+<span id="cb45-38"><a href="#cb45-38" tabindex="-1"></a>    telemetry_data <span class="op">=</span> {</span>
+<span id="cb45-39"><a href="#cb45-39" tabindex="-1"></a>        <span class="st">"fridge_id"</span>: fridge_id,</span>
+<span id="cb45-40"><a href="#cb45-40" tabindex="-1"></a>        <span class="st">"adjusted_temp"</span>: adjusted_temp,</span>
+<span id="cb45-41"><a href="#cb45-41" tabindex="-1"></a>        <span class="st">"safety_checks"</span>: include_safety_checks,</span>
+<span id="cb45-42"><a href="#cb45-42" tabindex="-1"></a>        <span class="st">"operating_temperature"</span>: operating_temperature</span>
+<span id="cb45-43"><a href="#cb45-43" tabindex="-1"></a>    }</span>
+<span id="cb45-44"><a href="#cb45-44" tabindex="-1"></a></span>
+<span id="cb45-45"><a href="#cb45-45" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Telemetry data: </span><span class="sc">{</span>telemetry_data<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-46"><a href="#cb45-46" tabindex="-1"></a></span>
+<span id="cb45-47"><a href="#cb45-47" tabindex="-1"></a>    <span class="co"># Experiment calibration logic</span></span>
+<span id="cb45-48"><a href="#cb45-48" tabindex="-1"></a>    scaling_factor <span class="op">=</span> experiment_params.get(<span class="st">"scaling_factor"</span>, <span class="fl">1.2</span>)</span>
+<span id="cb45-49"><a href="#cb45-49" tabindex="-1"></a>    offset_value <span class="op">=</span> experiment_params.get(<span class="st">"offset_value"</span>, <span class="dv">3</span>)</span>
+<span id="cb45-50"><a href="#cb45-50" tabindex="-1"></a>    smoothing_coefficient <span class="op">=</span> experiment_params.get(<span class="st">"smoothing_coefficient"</span>, <span class="fl">0.8</span>)</span>
+<span id="cb45-51"><a href="#cb45-51" tabindex="-1"></a>    window_size <span class="op">=</span> experiment_params.get(<span class="st">"window_size"</span>, <span class="dv">5</span>)</span>
+<span id="cb45-52"><a href="#cb45-52" tabindex="-1"></a>    modulation_factor <span class="op">=</span> experiment_params.get(<span class="st">"modulation_factor"</span>, <span class="fl">0.05</span>)</span>
+<span id="cb45-53"><a href="#cb45-53" tabindex="-1"></a>    experiment_data <span class="op">=</span> fridge_data.get(<span class="st">"experiment_data"</span>, [])</span>
+<span id="cb45-54"><a href="#cb45-54" tabindex="-1"></a></span>
+<span id="cb45-55"><a href="#cb45-55" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(experiment_data) <span class="op">!=</span> <span class="dv">20</span>:</span>
+<span id="cb45-56"><a href="#cb45-56" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Calibration data must have exactly 20 readings"</span>)</span>
+<span id="cb45-57"><a href="#cb45-57" tabindex="-1"></a></span>
+<span id="cb45-58"><a href="#cb45-58" tabindex="-1"></a>    experiment_data <span class="op">=</span> np.array(experiment_data)</span>
+<span id="cb45-59"><a href="#cb45-59" tabindex="-1"></a>    scaled_data <span class="op">=</span> experiment_data <span class="op">*</span> scaling_factor <span class="op">-</span> offset_value</span>
+<span id="cb45-60"><a href="#cb45-60" tabindex="-1"></a>    smoothed_data <span class="op">=</span> np.convolve(scaled_data, np.ones(window_size) <span class="op">/</span> window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
+<span id="cb45-61"><a href="#cb45-61" tabindex="-1"></a>    adjusted_data <span class="op">=</span> smoothed_data <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> modulation_factor <span class="op">*</span> np.sin(smoothed_data))</span>
+<span id="cb45-62"><a href="#cb45-62" tabindex="-1"></a>    experiment_temperature_adjustment <span class="op">=</span> np.tanh(</span>
+<span id="cb45-63"><a href="#cb45-63" tabindex="-1"></a>        np.average(adjusted_data, weights<span class="op">=</span>np.linspace(<span class="dv">1</span>, <span class="dv">2</span>, <span class="bu">len</span>(adjusted_data))) <span class="op">/</span> <span class="dv">10</span>)</span>
+<span id="cb45-64"><a href="#cb45-64" tabindex="-1"></a></span>
+<span id="cb45-65"><a href="#cb45-65" tabindex="-1"></a>    experiment_temperature <span class="op">=</span> operating_temperature <span class="op">+</span> experiment_temperature_adjustment</span>
+<span id="cb45-66"><a href="#cb45-66" tabindex="-1"></a></span>
+<span id="cb45-67"><a href="#cb45-67" tabindex="-1"></a>    experiment_outputs <span class="op">=</span> {</span>
+<span id="cb45-68"><a href="#cb45-68" tabindex="-1"></a>        <span class="st">"mean_before_adjustment"</span>: np.mean(experiment_data),</span>
+<span id="cb45-69"><a href="#cb45-69" tabindex="-1"></a>        <span class="st">"std_dev_before_adjustment"</span>: np.std(experiment_data),</span>
+<span id="cb45-70"><a href="#cb45-70" tabindex="-1"></a>        <span class="st">"mean_after_adjustment"</span>: np.mean(adjusted_data),</span>
+<span id="cb45-71"><a href="#cb45-71" tabindex="-1"></a>        <span class="st">"experiment_temperature_adjustment"</span>: experiment_temperature_adjustment,</span>
+<span id="cb45-72"><a href="#cb45-72" tabindex="-1"></a>        <span class="st">"calibration_factor"</span>: scaling_factor <span class="op">*</span> smoothing_coefficient <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="bu">abs</span>(modulation_factor)),</span>
+<span id="cb45-73"><a href="#cb45-73" tabindex="-1"></a>        <span class="st">"experiment_temperature"</span>: experiment_temperature</span>
+<span id="cb45-74"><a href="#cb45-74" tabindex="-1"></a>    }</span>
+<span id="cb45-75"><a href="#cb45-75" tabindex="-1"></a></span>
+<span id="cb45-76"><a href="#cb45-76" tabindex="-1"></a>    <span class="cf">return</span> telemetry_data, experiment_outputs</span>
+<span id="cb45-77"><a href="#cb45-77" tabindex="-1"></a></span>
+<span id="cb45-78"><a href="#cb45-78" tabindex="-1"></a></span>
+<span id="cb45-79"><a href="#cb45-79" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb45-80"><a href="#cb45-80" tabindex="-1"></a>    fridge_data <span class="op">=</span> {</span>
+<span id="cb45-81"><a href="#cb45-81" tabindex="-1"></a>        <span class="st">"id"</span>: <span class="st">"fridge123"</span>,</span>
+<span id="cb45-82"><a href="#cb45-82" tabindex="-1"></a>        <span class="st">"current_temperature"</span>: <span class="fl">5.0</span>,</span>
+<span id="cb45-83"><a href="#cb45-83" tabindex="-1"></a>        <span class="st">"target_temperature"</span>: <span class="fl">2.85</span>,</span>
+<span id="cb45-84"><a href="#cb45-84" tabindex="-1"></a>        <span class="st">"calibration_params"</span>: {</span>
+<span id="cb45-85"><a href="#cb45-85" tabindex="-1"></a>            <span class="st">"max_safe_temperature"</span>: <span class="fl">6.8</span>,</span>
+<span id="cb45-86"><a href="#cb45-86" tabindex="-1"></a>            <span class="st">"min_safe_temperature"</span>: <span class="fl">2.1</span>,</span>
+<span id="cb45-87"><a href="#cb45-87" tabindex="-1"></a>            <span class="st">"adjustment_factor"</span>: <span class="fl">1.05</span>,</span>
+<span id="cb45-88"><a href="#cb45-88" tabindex="-1"></a>            <span class="st">"stabilization_steps"</span>: <span class="dv">10</span></span>
+<span id="cb45-89"><a href="#cb45-89" tabindex="-1"></a>        },</span>
+<span id="cb45-90"><a href="#cb45-90" tabindex="-1"></a>        <span class="st">"experiment_params"</span>: {</span>
+<span id="cb45-91"><a href="#cb45-91" tabindex="-1"></a>            <span class="st">"scaling_factor"</span>: <span class="fl">1.1</span>,</span>
+<span id="cb45-92"><a href="#cb45-92" tabindex="-1"></a>            <span class="st">"offset_value"</span>: <span class="dv">2</span>,</span>
+<span id="cb45-93"><a href="#cb45-93" tabindex="-1"></a>            <span class="st">"smoothing_coefficient"</span>: <span class="fl">0.9</span>,</span>
+<span id="cb45-94"><a href="#cb45-94" tabindex="-1"></a>            <span class="st">"window_size"</span>: <span class="dv">3</span>,</span>
+<span id="cb45-95"><a href="#cb45-95" tabindex="-1"></a>            <span class="st">"modulation_factor"</span>: <span class="fl">0.03</span></span>
+<span id="cb45-96"><a href="#cb45-96" tabindex="-1"></a>        },</span>
+<span id="cb45-97"><a href="#cb45-97" tabindex="-1"></a>        <span class="st">"experiment_data"</span>: [<span class="fl">10.1</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">9.8</span>, <span class="op">-</span><span class="fl">10.3</span>, <span class="op">-</span><span class="fl">9.9</span>, <span class="fl">12.0</span>, <span class="fl">10.1</span>, <span class="fl">10.2</span>, <span class="fl">10.1</span>, <span class="fl">9.7</span>, <span class="op">-</span><span class="fl">15.1</span>,</span>
+<span id="cb45-98"><a href="#cb45-98" tabindex="-1"></a>                            <span class="fl">8.1</span>, <span class="dv">1</span><span class="op">-</span><span class="fl">1.2</span>, <span class="fl">10.3</span>, <span class="fl">10.0</span>, <span class="fl">10.1</span>, <span class="fl">7.2</span>, <span class="fl">9.8</span>, <span class="fl">9.9</span>, <span class="op">-</span><span class="fl">9.7</span>]</span>
+<span id="cb45-99"><a href="#cb45-99" tabindex="-1"></a>    }</span>
+<span id="cb45-100"><a href="#cb45-100" tabindex="-1"></a></span>
+<span id="cb45-101"><a href="#cb45-101" tabindex="-1"></a>    include_safety_checks <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb45-102"><a href="#cb45-102" tabindex="-1"></a></span>
+<span id="cb45-103"><a href="#cb45-103" tabindex="-1"></a>    <span class="co"># Run the function</span></span>
+<span id="cb45-104"><a href="#cb45-104" tabindex="-1"></a>    telemetry_data, experiment_outputs <span class="op">=</span> calibrate_fridge(fridge_data, include_safety_checks)</span>
+<span id="cb45-105"><a href="#cb45-105" tabindex="-1"></a></span>
+<span id="cb45-106"><a href="#cb45-106" tabindex="-1"></a>    <span class="co"># Print results</span></span>
+<span id="cb45-107"><a href="#cb45-107" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Telemetry Data:"</span>, telemetry_data)</span>
+<span id="cb45-108"><a href="#cb45-108" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Experiment Outputs:"</span>, experiment_outputs)</span>
+<span id="cb45-109"><a href="#cb45-109" tabindex="-1"></a></span>
+<span id="cb45-110"><a href="#cb45-110" tabindex="-1"></a><span class="co"># Run main function</span></span>
+<span id="cb45-111"><a href="#cb45-111" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb45-112"><a href="#cb45-112" tabindex="-1"></a>    main()</span>
+<span id="cb45-113"><a href="#cb45-113" tabindex="-1"></a></span></code></pre>
+</div>
+<p>Given this code, the challenge/final project of this course is the
+following:</p>
+<div id="final-project-1" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="final-project-1" class="callout-inner">
+<h3 class="callout-title">Final Project</h3>
+<div class="callout-content">
+<ol style="list-style-type: decimal"><li>The code shown above is available <a href="https://gitlab.tudelft.nl/bcpopescu/imsep_final_project/" class="external-link">here</a>
+<ul><li>clone this repo on your local machine</li>
+<li>create a separate branch <code>final_project_&lt;username&gt;</code>
+where you will do your work</li>
+</ul></li>
+<li>In your local working directory for this project, create a new
+Python 3.12 virtual environment and activate it.</li>
+<li>Install all necessary packages and run the calibration function</li>
+<li>Start creating unit tests for the calibration function. Assume the
+calibration function <em>as given</em> is correct.</li>
+<li>Run the unit tests, and check the code coverage; keep adding unit
+tests until you have a very high code coverage - you should aim for
+100%!</li>
+<li>Run your code through <code>pylint</code>. Note the issues
+<code>pylint</code> identifies in your code, and its initial score.</li>
+<li>Start refactoring the code - taking into account
+<code>pylint's</code> findings, and applying all techniques you have
+learned in this workshop.
+<ul><li>Make a plan of what you want to refactor, and in which order.</li>
+<li>Use the PyCharm refactoring tools to help you speed up this
+process.</li>
+<li>Work in small steps; after each refactoring step re-run the unit
+tests and make sure they pass!</li>
+<li>If tests start to fail - fix them; if you get stuck, use git to
+restore your code to a version where the tests were passing, and
+re-start from there.</li>
+<li>After each successful refactoring step commit your changes to
+git.</li>
+<li>After each refactoring step, re-run <code>pylint</code> and notice
+how your score is improving.</li>
+</ul></li>
+</ol></div>
+</div>
+</div>
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></section></div> <!-- / div.lesson-content -->
+ -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/workshop3intro.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/credits.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
