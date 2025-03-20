@@ -896,17 +896,14 @@ Refactored test:
 import pytest
 
 def test_addition():
-    """Test addition operation."""
     result = 4 + 5
     assert result == 9
 
 def test_multiplication():
-    """Test multiplication operation."""
     result = 3 * 3
     assert result == 9
 
 def test_division():
-    """Test division operation."""
     result = 10 / 2
     assert result == 5
 ```
