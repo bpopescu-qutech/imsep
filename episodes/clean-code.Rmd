@@ -341,10 +341,13 @@ def get_them(the_list):
 
 
 # GOOD
+STATUS_FIELD = 2
+FLAGGED = 5
+
 def get_flagged_cells(game_board):
     flagged_cells = []
     for cell in game_board:
-        if cell[STATUS_VALUE] = FLAGGED:
+        if cell[STATUS_FIELD] = FLAGGED:
              flagged_cells.append(x)
     return flagged_cells
 ```
@@ -500,7 +503,7 @@ def calibrate_fridge(fridge_data, include_safety_checks):
     stabilized_temp = stabilize_temperature(adjusted_temp, target_temp, calibration_params)
     fridge_data["final_temperature"] = stabilized_temp
 
-    send_telemetry(fridge_id, current_temp, stabilized_temp)
+    display_telemetry(fridge_id, current_temp, stabilized_temp)
     return f"Calibration complete. Final temperature: {stabilized_temp:.2f}"
 
 
@@ -524,27 +527,28 @@ def apply_temperature_adjustment(current_temp, target_temp, calibration_params):
     return adjusted_temp
 
 
-def stabilize_temperature(adjusted_temp, target_temp, calibration_params):
+def stabilize_temperature(initial_temp, target_temp, calibration_params):
     stabilization_steps = calibration_params.get("stabilization_steps", 10)
+    stabilized_temp = initial_temp
 
     for step in range(stabilization_steps):
-        correction_factor = 0.1 * (adjusted_temp - target_temp)
-        adjusted_temp -= correction_factor
+        correction_factor = 0.1 * (stabilized_temp - target_temp)
+        stabilized_temp -= correction_factor
 
-        if adjusted_temp < target_temp:
-            adjusted_temp += 0.05  # Minor correction if under target
-        elif adjusted_temp > target_temp:
-            adjusted_temp -= 0.05  # Minor correction if above target
+        if stabilized_temp < target_temp:
+            stabilized_temp += 0.05  # Minor correction if under target
+        elif stabilized_temp > target_temp:
+            stabilized_temp -= 0.05  # Minor correction if above target
 
-        temperature_variance = abs(adjusted_temp - target_temp)
+        temperature_variance = abs(stabilized_temp - target_temp)
         if temperature_variance < 0.01:
             break  # Break early if within a small tolerance
-        adjusted_temp -= 0.01 * temperature_variance
+        stabilized_temp -= 0.01 * temperature_variance
 
-    return adjusted_temp
+    return stabilized_temp
 
 
-def send_telemetry(fridge_id, start_temp, end_temp, safety_checks):
+def display_telemetry(fridge_id, start_temp, end_temp, safety_checks):
     telemetry_data = {
         "fridge_id": fridge_id,
         "start_temp": start_temp,
@@ -561,17 +565,16 @@ def send_telemetry(fridge_id, start_temp, end_temp, safety_checks):
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-##### Do one thing at one level of abstraction
+##### **Single Responsibility Principle**: Do one thing at one level of abstraction
 
-The 'messy' code example above is difficult to comprehend, because the code
-constantly jumps between different levels of abstractions: performing
-low-level calibration and stabilization steps,fetching parameters, throwing
-exceptions, etc.
+The 'messy' code example above is difficult to comprehend, because the code constantly jumps between different levels
+of abstractions: performing low-level calibration and stabilization steps, fetching parameters, throwing
+exceptions, etc. This goes against the so-called "Single Responsibility Principle" - which is a well-known rule in
+object-oriented programming and software engineering - which states that a class or a function should only do one thing.
 
-Instead, 'clean' code should follow the **Stepdown Rule**: the code should read
-like a top-down narrative - so we can read the program like a narrative,
-descending one level of abstraction as we read down the list of functions.
-This is what makes the refactored example so much easier to understand.
+This is easy to achieve if 'clean' functions should also follow our earlier "newspaper article" paradigm: the code should read
+like a top-down story - so we can read the program like a narrative, descending one level of abstraction as we read
+down the list of functions. This is what makes the refactored example so much easier to understand.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
