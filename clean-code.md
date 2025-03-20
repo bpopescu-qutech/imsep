@@ -567,12 +567,12 @@ def display_telemetry(fridge_id, start_temp, end_temp, safety_checks):
 
 ##### **Single Responsibility Principle**: Do one thing at one level of abstraction
 
-The 'messy' code example above is difficult to comprehend, because the code constantly jumps between different levels
+The "messy" code example above is difficult to comprehend because the code constantly jumps between different levels
 of abstractions: performing low-level calibration and stabilization steps, fetching parameters, throwing
-exceptions, etc. This goes against the so-called "Single Responsibility Principle" - which is a well-known rule in
-object-oriented programming and software engineering - which states that a class or a function should only do one thing.
+exceptions, etc. This goes against the so-called *Single Responsibility Principle* - which is a well-known rule in
+object-oriented programming and software engineering - stating that a class or a function should only do one thing.
 
-This is easy to achieve if 'clean' functions should also follow our earlier "newspaper article" paradigm: the code should read
+This is easy to achieve if "clean" functions should also follow our earlier "newspaper article" paradigm: the code should read
 like a top-down story - so we can read the program like a narrative, descending one level of abstraction as we read
 down the list of functions. This is what makes the refactored example so much easier to understand.
 
