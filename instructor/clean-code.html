@@ -365,7 +365,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Clean Code</h1>
-        <p>Last updated on 2025-03-17 |
+        <p>Last updated on 2025-03-20 |
 
         <a href="https://github.com/QuTech-Delft/prosoftdev-research/edit/main/episodes/clean-code.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -787,12 +787,15 @@ with your code) a lot of time in the future:</p>
 <span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a></span>
 <span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
 <span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co"># GOOD</span></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="kw">def</span> get_flagged_cells(game_board):</span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>    flagged_cells <span class="op">=</span> []</span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>    <span class="cf">for</span> cell <span class="kw">in</span> game_board:</span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>        <span class="cf">if</span> cell[STATUS_VALUE] <span class="op">=</span> FLAGGED:</span>
-<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>             flagged_cells.append(x)</span>
-<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>    <span class="cf">return</span> flagged_cells</span></code></pre>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>STATUS_FIELD <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>FLAGGED <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="kw">def</span> get_flagged_cells(game_board):</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>    flagged_cells <span class="op">=</span> []</span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>    <span class="cf">for</span> cell <span class="kw">in</span> game_board:</span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>        <span class="cf">if</span> cell[STATUS_FIELD] <span class="op">=</span> FLAGGED:</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>             flagged_cells.append(x)</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>    <span class="cf">return</span> flagged_cells</span></code></pre>
 </div>
 </div>
 </div>
@@ -969,7 +972,7 @@ function should fit on one screen.</p>
 <span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>    stabilized_temp <span class="op">=</span> stabilize_temperature(adjusted_temp, target_temp, calibration_params)</span>
 <span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>    fridge_data[<span class="st">"final_temperature"</span>] <span class="op">=</span> stabilized_temp</span>
 <span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>    send_telemetry(fridge_id, current_temp, stabilized_temp)</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>    display_telemetry(fridge_id, current_temp, stabilized_temp)</span>
 <span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"Calibration complete. Final temperature: </span><span class="sc">{</span>stabilized_temp<span class="sc">:.2f}</span><span class="ss">"</span></span>
 <span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a></span>
 <span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a></span>
@@ -993,54 +996,60 @@ function should fit on one screen.</p>
 <span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a>    <span class="cf">return</span> adjusted_temp</span>
 <span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a></span>
 <span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a></span>
-<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a><span class="kw">def</span> stabilize_temperature(adjusted_temp, target_temp, calibration_params):</span>
+<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a><span class="kw">def</span> stabilize_temperature(initial_temp, target_temp, calibration_params):</span>
 <span id="cb13-40"><a href="#cb13-40" tabindex="-1"></a>    stabilization_steps <span class="op">=</span> calibration_params.get(<span class="st">"stabilization_steps"</span>, <span class="dv">10</span>)</span>
-<span id="cb13-41"><a href="#cb13-41" tabindex="-1"></a></span>
-<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(stabilization_steps):</span>
-<span id="cb13-43"><a href="#cb13-43" tabindex="-1"></a>        correction_factor <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> (adjusted_temp <span class="op">-</span> target_temp)</span>
-<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a>        adjusted_temp <span class="op">-=</span> correction_factor</span>
-<span id="cb13-45"><a href="#cb13-45" tabindex="-1"></a></span>
-<span id="cb13-46"><a href="#cb13-46" tabindex="-1"></a>        <span class="cf">if</span> adjusted_temp <span class="op">&lt;</span> target_temp:</span>
-<span id="cb13-47"><a href="#cb13-47" tabindex="-1"></a>            adjusted_temp <span class="op">+=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if under target</span></span>
-<span id="cb13-48"><a href="#cb13-48" tabindex="-1"></a>        <span class="cf">elif</span> adjusted_temp <span class="op">&gt;</span> target_temp:</span>
-<span id="cb13-49"><a href="#cb13-49" tabindex="-1"></a>            adjusted_temp <span class="op">-=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if above target</span></span>
-<span id="cb13-50"><a href="#cb13-50" tabindex="-1"></a></span>
-<span id="cb13-51"><a href="#cb13-51" tabindex="-1"></a>        temperature_variance <span class="op">=</span> <span class="bu">abs</span>(adjusted_temp <span class="op">-</span> target_temp)</span>
-<span id="cb13-52"><a href="#cb13-52" tabindex="-1"></a>        <span class="cf">if</span> temperature_variance <span class="op">&lt;</span> <span class="fl">0.01</span>:</span>
-<span id="cb13-53"><a href="#cb13-53" tabindex="-1"></a>            <span class="cf">break</span>  <span class="co"># Break early if within a small tolerance</span></span>
-<span id="cb13-54"><a href="#cb13-54" tabindex="-1"></a>        adjusted_temp <span class="op">-=</span> <span class="fl">0.01</span> <span class="op">*</span> temperature_variance</span>
-<span id="cb13-55"><a href="#cb13-55" tabindex="-1"></a></span>
-<span id="cb13-56"><a href="#cb13-56" tabindex="-1"></a>    <span class="cf">return</span> adjusted_temp</span>
-<span id="cb13-57"><a href="#cb13-57" tabindex="-1"></a></span>
+<span id="cb13-41"><a href="#cb13-41" tabindex="-1"></a>    stabilized_temp <span class="op">=</span> initial_temp</span>
+<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a></span>
+<span id="cb13-43"><a href="#cb13-43" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(stabilization_steps):</span>
+<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a>        correction_factor <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> (stabilized_temp <span class="op">-</span> target_temp)</span>
+<span id="cb13-45"><a href="#cb13-45" tabindex="-1"></a>        stabilized_temp <span class="op">-=</span> correction_factor</span>
+<span id="cb13-46"><a href="#cb13-46" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" tabindex="-1"></a>        <span class="cf">if</span> stabilized_temp <span class="op">&lt;</span> target_temp:</span>
+<span id="cb13-48"><a href="#cb13-48" tabindex="-1"></a>            stabilized_temp <span class="op">+=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if under target</span></span>
+<span id="cb13-49"><a href="#cb13-49" tabindex="-1"></a>        <span class="cf">elif</span> stabilized_temp <span class="op">&gt;</span> target_temp:</span>
+<span id="cb13-50"><a href="#cb13-50" tabindex="-1"></a>            stabilized_temp <span class="op">-=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if above target</span></span>
+<span id="cb13-51"><a href="#cb13-51" tabindex="-1"></a></span>
+<span id="cb13-52"><a href="#cb13-52" tabindex="-1"></a>        temperature_variance <span class="op">=</span> <span class="bu">abs</span>(stabilized_temp <span class="op">-</span> target_temp)</span>
+<span id="cb13-53"><a href="#cb13-53" tabindex="-1"></a>        <span class="cf">if</span> temperature_variance <span class="op">&lt;</span> <span class="fl">0.01</span>:</span>
+<span id="cb13-54"><a href="#cb13-54" tabindex="-1"></a>            <span class="cf">break</span>  <span class="co"># Break early if within a small tolerance</span></span>
+<span id="cb13-55"><a href="#cb13-55" tabindex="-1"></a>        stabilized_temp <span class="op">-=</span> <span class="fl">0.01</span> <span class="op">*</span> temperature_variance</span>
+<span id="cb13-56"><a href="#cb13-56" tabindex="-1"></a></span>
+<span id="cb13-57"><a href="#cb13-57" tabindex="-1"></a>    <span class="cf">return</span> stabilized_temp</span>
 <span id="cb13-58"><a href="#cb13-58" tabindex="-1"></a></span>
-<span id="cb13-59"><a href="#cb13-59" tabindex="-1"></a><span class="kw">def</span> send_telemetry(fridge_id, start_temp, end_temp, safety_checks):</span>
-<span id="cb13-60"><a href="#cb13-60" tabindex="-1"></a>    telemetry_data <span class="op">=</span> {</span>
-<span id="cb13-61"><a href="#cb13-61" tabindex="-1"></a>        <span class="st">"fridge_id"</span>: fridge_id,</span>
-<span id="cb13-62"><a href="#cb13-62" tabindex="-1"></a>        <span class="st">"start_temp"</span>: start_temp,</span>
-<span id="cb13-63"><a href="#cb13-63" tabindex="-1"></a>        <span class="st">"end_temp"</span>: end_temp,</span>
-<span id="cb13-64"><a href="#cb13-64" tabindex="-1"></a>    }</span>
-<span id="cb13-65"><a href="#cb13-65" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Telemetry data: </span><span class="sc">{</span>telemetry_data<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+<span id="cb13-59"><a href="#cb13-59" tabindex="-1"></a></span>
+<span id="cb13-60"><a href="#cb13-60" tabindex="-1"></a><span class="kw">def</span> display_telemetry(fridge_id, start_temp, end_temp, safety_checks):</span>
+<span id="cb13-61"><a href="#cb13-61" tabindex="-1"></a>    telemetry_data <span class="op">=</span> {</span>
+<span id="cb13-62"><a href="#cb13-62" tabindex="-1"></a>        <span class="st">"fridge_id"</span>: fridge_id,</span>
+<span id="cb13-63"><a href="#cb13-63" tabindex="-1"></a>        <span class="st">"start_temp"</span>: start_temp,</span>
+<span id="cb13-64"><a href="#cb13-64" tabindex="-1"></a>        <span class="st">"end_temp"</span>: end_temp,</span>
+<span id="cb13-65"><a href="#cb13-65" tabindex="-1"></a>    }</span>
+<span id="cb13-66"><a href="#cb13-66" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Telemetry data: </span><span class="sc">{</span>telemetry_data<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="do-one-thing-at-one-level-of-abstraction" class="callout">
+<div id="single-responsibility-principle-do-one-thing-at-one-level-of-abstraction" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="do-one-thing-at-one-level-of-abstraction" class="callout-inner">
-<h3 class="callout-title">Do one thing at one level of abstraction</h3>
+<div id="single-responsibility-principle-do-one-thing-at-one-level-of-abstraction" class="callout-inner">
+<h3 class="callout-title">
+<strong>Single Responsibility
+Principle</strong>: Do one thing at one level of abstraction</h3>
 <div class="callout-content">
 <p>The ‘messy’ code example above is difficult to comprehend, because
 the code constantly jumps between different levels of abstractions:
-performing low-level calibration and stabilization steps,fetching
-parameters, throwing exceptions, etc.</p>
-<p>Instead, ‘clean’ code should follow the <strong>Stepdown
-Rule</strong>: the code should read like a top-down narrative - so we
-can read the program like a narrative, descending one level of
-abstraction as we read down the list of functions. This is what makes
-the refactored example so much easier to understand.</p>
+performing low-level calibration and stabilization steps, fetching
+parameters, throwing exceptions, etc. This goes against the so-called
+“Single Responsibility Principle” - which is a well-known rule in
+object-oriented programming and software engineering - which states that
+a class or a function should only do one thing.</p>
+<p>This is easy to achieve if ‘clean’ functions should also follow our
+earlier “newspaper article” paradigm: the code should read like a
+top-down story - so we can read the program like a narrative, descending
+one level of abstraction as we read down the list of functions. This is
+what makes the refactored example so much easier to understand.</p>
 </div>
 </div>
 </div>
@@ -2128,9 +2137,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://QuTech-Delft.github.io/prosoftdev-research/instructor/clean-code.html",
   "identifier": "https://QuTech-Delft.github.io/prosoftdev-research/instructor/clean-code.html",
-  "dateCreated": "2025-03-17",
-  "dateModified": "2025-03-17",
-  "datePublished": "2025-03-18"
+  "dateCreated": "2025-03-20",
+  "dateModified": "2025-03-20",
+  "datePublished": "2025-03-20"
 }
 
   </script><script>
