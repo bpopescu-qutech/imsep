@@ -6731,7 +6731,7 @@ into the actual code.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6801,7 +6801,7 @@ should be in close visual proximity.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7105,7 +7105,7 @@ function should fit on one screen.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7248,7 +7248,7 @@ your function names</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7614,7 +7614,7 @@ refactor it into “clean” test code?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The above test breaks many of the “clean” tests and “clean” code
 principles:</p>
@@ -7635,19 +7635,16 @@ the user</li>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="im">import</span> pytest</span>
 <span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="kw">def</span> test_addition():</span>
-<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>    <span class="co">"""Test addition operation."""</span></span>
-<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">4</span> <span class="op">+</span> <span class="dv">5</span></span>
-<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a>    <span class="cf">assert</span> result <span class="op">==</span> <span class="dv">9</span></span>
-<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a><span class="kw">def</span> test_multiplication():</span>
-<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>    <span class="co">"""Test multiplication operation."""</span></span>
-<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">3</span></span>
-<span id="cb26-11"><a href="#cb26-11" tabindex="-1"></a>    <span class="cf">assert</span> result <span class="op">==</span> <span class="dv">9</span></span>
-<span id="cb26-12"><a href="#cb26-12" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" tabindex="-1"></a><span class="kw">def</span> test_division():</span>
-<span id="cb26-14"><a href="#cb26-14" tabindex="-1"></a>    <span class="co">"""Test division operation."""</span></span>
-<span id="cb26-15"><a href="#cb26-15" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb26-16"><a href="#cb26-16" tabindex="-1"></a>    <span class="cf">assert</span> result <span class="op">==</span> <span class="dv">5</span></span></code></pre>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">4</span> <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb26-5"><a href="#cb26-5" tabindex="-1"></a>    <span class="cf">assert</span> result <span class="op">==</span> <span class="dv">9</span></span>
+<span id="cb26-6"><a href="#cb26-6" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" tabindex="-1"></a><span class="kw">def</span> test_multiplication():</span>
+<span id="cb26-8"><a href="#cb26-8" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> <span class="dv">3</span></span>
+<span id="cb26-9"><a href="#cb26-9" tabindex="-1"></a>    <span class="cf">assert</span> result <span class="op">==</span> <span class="dv">9</span></span>
+<span id="cb26-10"><a href="#cb26-10" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" tabindex="-1"></a><span class="kw">def</span> test_division():</span>
+<span id="cb26-12"><a href="#cb26-12" tabindex="-1"></a>    result <span class="op">=</span> <span class="dv">10</span> <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb26-13"><a href="#cb26-13" tabindex="-1"></a>    <span class="cf">assert</span> result <span class="op">==</span> <span class="dv">5</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -7780,7 +7777,7 @@ Your code has been rated at 5.91/10</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
