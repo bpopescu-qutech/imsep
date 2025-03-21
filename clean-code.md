@@ -918,7 +918,10 @@ def test_division():
 ### PyCharm and Clean Code
 
 Using a modern development environment, such as PyCharm, can greatly facilitate
-writing clean code. In this section we will go over a few ways this can be accomplished.
+writing clean code. Correctly configured, PyCharm can give you very useful hints on the style and content
+of your code, which can greatly facilitate refactoring towards clean code. PyCharm can also do some refactoring
+for you - for example changing the name of a function or variable - PyCharm will ensure the name is changed
+consistently throughout the code - which is much less error prone than doing it by hand.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -956,7 +959,7 @@ quality of your code based on the issues Pylint identifies, weighted by their se
 Pylint can be easily installed using `pip`:
 
 ```bash
-pip install pylint
+python -m pip install pylint
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -1182,7 +1185,7 @@ various testing frameworks like pytest.
 To use *coverage.py* you will need to install it first. This can be easily done using *pip*:
 
 ```bash
-pip install coverage
+python -m pip install coverage
 ```
 
 You can then verify the installation:

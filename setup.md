@@ -14,9 +14,9 @@ The course is structured in three parts intended to be offered as half-day works
 
 - Part 1 (Episodes 1, 2, 3) starts by framing the course in the context of the QuTech Software Maturity Model, and then
 dwells into its technical content by introducing the fundamentals of version control and Git.
-- Part 2 (Episodes 4, 5, and 6) introduces GitLab, and its support for more advanced Git workflows and ends with
+- Part 2 (Episodes 5, 6, and 7) introduces GitLab, and its support for more advanced Git workflows and ends with
 introducing the basics of Python Virtual Environments.
-- Part 3 (Episode 7) covers the basics of "clean code", with a focus on Python and its development tools ecosystem. 
+- Part 3 (Episode 9) covers the basics of "clean code", with a focus on Python and its development tools ecosystem. 
 
 Each workshop should take between three and four hours, and will consist of three one hour modules split by 
 breaks. The first break will be around ten minutes, while the second one around 30 minutes - during which lunch will 
