@@ -275,23 +275,11 @@ Alfredo also has to set his favorite text editor, following this table:
 | Vim                                   | `$ git config --global core.editor "vim"`                      | 
 | VS Code                               | `$ git config --global core.editor "code --wait"`                      | 
 
-It is possible to reconfigure the text editor for Git whenever you want to change it. For now, let's
-select `vim` as our editor, unless you have a strong preference for something else.
+It is possible to reconfigure the text editor for Git whenever you want to change it. To keep the presentation uniform,
+we will use `nano` as our default editor for this workshop.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-### Exiting Vim
-
-Note that Vim is the default editor for many programs. If you haven't used Vim before and wish to exit a session without saving
-your changes, press <kbd>Esc</kbd> then type `:q!` and press <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>.
-If you want to save your changes and quit, press <kbd>Esc</kbd> then type `:wq` and press <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-Git (2.28+) allows configuration of the name of the branch created when you
-initialize any new repository.  Alfredo decides to use that feature to set it to `main` so
-it matches the cloud service he will eventually use.
+Git (2.28+) allows configuration of the name of the branch created when you initialize any new repository.  Alfredo
+decides to use that feature to set it to `main` so it matches the cloud service he will eventually use.
 
 ```bash
 $ git config --global init.defaultBranch main
