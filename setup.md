@@ -41,6 +41,15 @@ This setup document will walk you through the process of installing or upgrading
    c. **[Coverage.py]** (&ge; 7.3 recommended)
 4. **[Etherpad]** - for sharing data with the rest of the class
 
+## First Workshop Schedule
+
+- Introduction
+- QSMM
+- Short break
+- Version Control and Git
+- Lunch break
+- Basic Git commands and workflows
+
 
 
 
