@@ -29,40 +29,6 @@ concepts and tools.
 This course has no prerequisites. However, participants should have an interest or affinity for Python programming 
 and a basic understanding of using Linux/Unix command line interfaces.
 
-## Course Material Format
-The course material is presented on a website. You can use the left navigation panel to move between lectures (episodes)
-and between the main sections of an episode. We are using the [Carpentries Workbench](https://carpentries.github.io/workbench/)
-to provide a uniform look-and-feel to the course material. The most important UI blocks you will see throughout the course are
-*callouts* and *challenges* 
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-#### Callout
-
-A **callout** is a specially formatted content block used to highlight important information in a lesson. 
-Callouts help quickly identify key points, warnings, or additional insights. We will go over some of the
-callouts together, while you will be asked to approach some of the other ones as self-study.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-#### Challenge
-
-A **challenge** is a hands-on exercise where you will be asked to put in practice some of the concepts you
-have just learned. These may be individual or group work. Once you have completed the challenge you can also
-look at one possible solution we provide, by clicking on the "Show me the solution" link. 
-
-:::::::::::::::  solution
-
-A possible solution to the challenge will be shown here.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 ## Required Software {#required}
 
 This setup document will walk you through the process of installing or upgrading  the required software in the following order.
