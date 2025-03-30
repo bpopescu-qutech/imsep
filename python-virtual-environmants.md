@@ -123,13 +123,12 @@ From <a href="https://xkcd.com/1987/" target="_blank">XKCD</a> (Creative Commons
 In order to avoid this "Python environment hell" problem, in this course we will only focus on `venv` and `pip`.
 Only focusing on these has several advantages, especially for novice users:
 
-- `venv` and `pip` are considered the de-facto standards or virtual environment
-and package management for Python 3, so there is ample online documentation for both of them.
+- `venv` and `pip` have been around for quite a while, they are widely used, are very stable, and there is ample online
+documentation for both of them.
 - `venv` and `pip` are quite low-level, and minimalistic, so you do not have to deal with
 the feature explosion and bloatware that other tools may experience.
-- finally, many of the more high-level tools use the functionality provided by `venv` and `pip`
-as building blocks, so having a ood understanding of these provides a solid foundation to
-expand to more sophisticated tools.
+- finally, many of the more high-level tools use the functionality provided by `venv` and `pip` as building blocks,
+so having a ood understanding of these provides a solid foundation to expand to more sophisticated tools.
 
 In the next sections we will look at how to use `venv` and `pip` from the command line, similar to the approach
 we took when learning `git`
