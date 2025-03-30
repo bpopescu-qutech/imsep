@@ -128,7 +128,7 @@ documentation for both of them.
 - `venv` and `pip` are quite low-level, and minimalistic, so you do not have to deal with
 the feature explosion and bloatware that other tools may experience.
 - finally, many of the more high-level tools use the functionality provided by `venv` and `pip` as building blocks,
-so having a ood understanding of these provides a solid foundation to expand to more sophisticated tools.
+so having a good understanding of these provides a solid foundation to expand to more sophisticated tools.
 
 In the next sections we will look at how to use `venv` and `pip` from the command line, similar to the approach
 we took when learning `git`
