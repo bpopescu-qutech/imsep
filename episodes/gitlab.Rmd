@@ -475,8 +475,8 @@ cat ~/.ssh/id_ed25519.pub
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI a.linguini@ratatouille.fr
 ```
 
-Now, going to the GitLab page in your browser, click on your profile icon in the top right corner
-of the left panel, then click on the `SSH Keys` link under `User Settings` in the same panel:
+Now, going to the GitLab page in your browser, click on your profile icon in the top right corner of the left panel,
+select `Edit profile` from the menu, then click on the `SSH Keys` link under `User Settings` in the same panel:
 
 ![](fig/gitlab_ssh_keys.jpg){alt='The SSH Keys page in GitLab'}
 

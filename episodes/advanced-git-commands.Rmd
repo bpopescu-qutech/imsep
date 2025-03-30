@@ -188,23 +188,15 @@ Switch roles and repeat the whole process.
 ### Review Changes
 
 The Owner pushed commits to the repository without giving any information
-to the Collaborator. How can the Collaborator find out what has changed with
-command line? And on GitLab?
+to the Collaborator. How can the Collaborator find out what has changed using GitLab?
 
 :::::::::::::::  solution
 
 ### Solution
 
-On the command line, the Collaborator can use `git fetch origin main`
-to get the remote changes into the local repository, but without merging
-them. Then by running `git diff main origin/main` the Collaborator
-will see the changes output in the terminal.
-
-On GitLab, the Collaborator can go to the project and click on the "Code" menu
-on the left panel, and from there select the "Commits" option.
-This will open a new page on the right panel, showing the commits history
-for that project. By clicking on such a commit, the user can see the
-changes made per file, which will be highlighted by GitLab as shown below.
+On GitLab, the Collaborator can go to the project and click on the "Code" menu on the left panel, and from there select
+the "Commits" option. This will open a new page on the right panel, showing the commits history for that project. By
+clicking on such a commit, the user can see the changes made per file, which will be highlighted by GitLab as shown below.
 
 ![](fig/commit_changes_gitlab.jpg){alt='Reviewing commit changes in GitLab'}
 
@@ -585,167 +577,6 @@ then resolve it.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Conflicts on Non-textual files
-
-What does Git do
-when there is a conflict in an image or some other non-textual file
-that is stored in version control?
-
-:::::::::::::::  solution
-
-## Solution
-
-Let's try it. Suppose Alfredo takes a picture of its guacamole and
-calls it `guacamole.jpg`.
-
-If you do not have an image file of guacamole available, you can create
-a dummy binary file like this:
-
-```bash
-$ head --bytes 1024 /dev/urandom > guacamole.jpg
-$ ls -lh guacamole.jpg
-```
-
-```output
--rw-r--r-- 1 alflin 57095 1.0K Mar  8 20:24 guacamole.jpg
-```
-
-`ls` shows us that this created a 1-kilobyte file. It is full of
-random bytes read from the special file, `/dev/urandom`.
-
-Now, suppose Alfredo adds `guacamole.jpg` to his repository:
-
-```bash
-$ git add guacamole.jpg
-$ git commit -m "Add picture of guacamole"
-```
-
-```output
-[main 8e4115c] Add picture of guacamole
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 guacamole.jpg
-```
-
-Suppose that Jimmy has added a similar picture in the meantime.
-His is a picture of a guacamole with nachos, but it is *also* called `guacamole.jpg`.
-When Alfredo tries to push, he gets a familiar message:
-
-```bash
-$ git push origin main
-```
-
-```output
-To https://gitlab.tudelft.nl/alflin/recipes.git
- ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://gitlab.tudelft.nl:alflin/recipes.git'
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
-```
-
-We've learned that we must pull first and resolve any conflicts:
-
-```bash
-$ git pull origin main
-```
-
-When there is a conflict on an image or other binary file, git prints
-a message like this:
-
-```output
-$ git pull origin main
-remote: Counting objects: 3, done.
-remote: Compressing objects: 100% (3/3), done.
-remote: Total 3 (delta 0), reused 0 (delta 0)
-Unpacking objects: 100% (3/3), done.
-From https://gitlab.tudelft.nl:alflin/recipes.git
- * branch            main     -> FETCH_HEAD
-   6a67967..439dc8c  main     -> origin/main
-warning: Cannot merge binary files: guacamole.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
-Auto-merging guacamole.jpg
-CONFLICT (add/add): Merge conflict in guacamole.jpg
-Automatic merge failed; fix conflicts and then commit the result.
-```
-
-The conflict message here is mostly the same as it was for `guacamole.md`, but
-there is one key additional line:
-
-```output
-warning: Cannot merge binary files: guacamole.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
-```
-
-Git cannot automatically insert conflict markers into an image as it does
-for text files. So, instead of editing the image file, we must check out
-the version we want to keep. Then we can add and commit this version.
-
-On the key line above, Git has conveniently given us commit identifiers
-for the two versions of `guacamole.jpg`. Our version is `HEAD`, and Jimmy's
-version is `439dc8c0...`. If we want to use our version, we can use
-`git checkout`:
-
-```bash
-$ git checkout HEAD guacamole.jpg
-$ git add guacamole.jpg
-$ git commit -m "Use image of just guacamole instead of with nachos"
-```
-
-```output
-[main 21032c3] Use image of just guacamole instead of with nachos
-```
-
-If instead we want to use Jimmy's version, we can use `git checkout` with
-Jimmy's commit identifier, `439dc8c0`:
-
-```bash
-$ git checkout 439dc8c0 guacamole.jpg
-$ git add guacamole.jpg
-$ git commit -m "Use image of guacamole with nachos instead of just guacamole"
-```
-
-```output
-[main da21b34] Use image of guacamole with nachos instead of just guacamole
-```
-
-We can also keep *both* images. The catch is that we cannot keep them
-under the same name. But, we can check out each version in succession
-and *rename* it, then add the renamed versions. First, check out each
-image and rename it:
-
-```bash
-$ git checkout HEAD guacamole.jpg
-$ git mv guacamole.jpg guacamole-only.jpg
-$ git checkout 439dc8c0 guacamole.jpg
-$ mv guacamole.jpg guacamole-nachos.jpg
-```
-
-Then, remove the old `guacamole.jpg` and add the two new files:
-
-```bash
-$ git rm guacamole.jpg
-$ git add guacamole-only.jpg
-$ git add guacamole-nachos.jpg
-$ git commit -m "Use two images: just guacamole and with nachos"
-```
-
-```output
-[main 94ae08c] Use two images: just guacamole and with nachos
- 2 files changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 guacamole-nachos.jpg
- rename guacamole.jpg => guacamole-only.jpg (100%)
-```
-
-Now both images of guacamole are checked into the repository, and `guacamole.jpg`
-no longer exists.
-
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
