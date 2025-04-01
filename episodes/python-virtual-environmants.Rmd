@@ -103,6 +103,7 @@ your system. Here as well there are plenty of tools and technologies to choose f
 packages from the central repository called [Python Package Index (PyPI)](https://pypi.org/)
 - `easy_install` - a legacy package manager now largely replaced by `pip`
 - `pdm` - a modern Python package manager that follows the latest Python community guidelines, but doesn't enforce virtual environments
+- `uv` - a new and very fast Python package manager intended to eventually replace `pip`
 - `conda`
 - `poetry`
 
