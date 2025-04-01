@@ -20,8 +20,8 @@ exercises: 20
 - Create a project.
 - Change name, description, visibility, and avatar of a project.
 - Archive (or delete) a project.
-- Explain the concepts of members and roles.
-- Add a member to a project.
+- Connecting a GitLab project with a Git repository.
+- Explain the concepts of members and roles and adding members to a GitLab project.
 - Contribute to a project that you are a member of.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
