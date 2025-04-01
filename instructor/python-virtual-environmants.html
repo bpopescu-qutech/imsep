@@ -938,15 +938,30 @@ License: Copyright (c) 2005-2024, NumPy Developers.
  All rights reserved.
 ...</code></pre>
 </div>
-<p>To install a specific version of a Python package give the package
+<div id="pip-install-flags" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="pip-install-flags" class="callout-inner">
+<h3 class="callout-title">
+<code>pip install</code> Flags</h3>
+<div class="callout-content">
+<p><code>pip install</code> allows you to precisely control the version
+of the library it will install through its command flags. Some of the
+most commonly-used flags are shown here:</p>
+<ul><li>To install a specific version of a Python package give the package
 name followed by <code>==</code> and the version number,
-e.g. <code>python -m pip install numpy==2.2.3</code>.</p>
-<p>To specify a minimum version of a Python package, you can do
-<code>python -m pip install numpy&gt;=1.20</code>.</p>
-<p>To upgrade a package to the latest version,
-e.g. <code>python3 -m pip install --upgrade numpy</code>.</p>
-<p>To list all packages installed with <code>pip</code> (in your current
-virtual environment):</p>
+e.g. <code>python -m pip install numpy==2.2.3</code>.</li>
+<li>To specify a minimum version of a Python package, you can do
+<code>python -m pip install numpy&gt;=1.20</code>.</li>
+<li>To upgrade a package to the latest version,
+e.g. <code>python3 -m pip install --upgrade numpy</code>.</li>
+</ul></div>
+</div>
+</div>
+<p>Once packages have been installed, it is often useful to get an
+overview of everything present in a virtual environment. For this,
+<code>pip</code> provides a handy command called <code>list</code>:</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -970,7 +985,8 @@ pyparsing       3.2.1
 python-dateutil 2.9.0.post0
 six             1.17.0</code></pre>
 </div>
-<p>To uninstall a package installed in the virtual environment do:
+<p>Finally, installed packages can be un-installed using the
+<code>uninstall</code> command:
 <code>python -m pip uninstall &lt;package-name&gt;</code>. You can also
 supply a list of packages to uninstall at the same time.</p>
 <div id="practice-various-pip-operations" class="callout challenge">
@@ -1000,7 +1016,7 @@ operations</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul><li>Numpy version 1.0.3 does not exist - when you try to install it
 <code>pip</code> will give an error message This shows you that
