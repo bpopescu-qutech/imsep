@@ -419,15 +419,22 @@ License: Copyright (c) 2005-2024, NumPy Developers.
 ...
 ```
 
-To install a specific version of a Python package give the package name followed by `==` and the version number,
+::: callout
+
+#### `pip install` Flags
+
+`pip install` allows you to precisely control the version of the library it will install through its command flags.
+Some of the most commonly-used flags are shown here:
+
+- To install a specific version of a Python package give the package name followed by `==` and the version number,
 e.g. `python -m pip install numpy==2.2.3`.
+- To specify a minimum version of a Python package, you can do `python -m pip install numpy>=1.20`.
+- To upgrade a package to the latest version, e.g. `python3 -m pip install --upgrade numpy`.
 
-To specify a minimum version of a Python package, you can do `python -m pip install numpy>=1.20`.
+:::
 
-To upgrade a package to the latest version, e.g. `python3 -m pip install --upgrade numpy`.
-
-
-To list all packages installed with `pip` (in your current virtual environment):
+Once packages have been installed, it is often useful to get an overview of everything present in a virtual environment.
+For this, `pip` provides a handy command called `list`:
 
 ```bash
 (venv) $ python -m pip list
@@ -450,7 +457,7 @@ python-dateutil 2.9.0.post0
 six             1.17.0
 ```
 
-To uninstall a package installed in the virtual environment do: `python -m pip uninstall <package-name>`.
+Finally, installed packages can be un-installed using the `uninstall` command: `python -m pip uninstall <package-name>`.
 You can also supply a list of packages to uninstall at the same time.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
