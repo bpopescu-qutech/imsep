@@ -15,10 +15,8 @@ exercises: 20
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Use GitLab’s interface to find a project.
-- Use GitLab’s interface to find groups.
-- Create a project.
-- Change name, description, visibility, and avatar of a project.
+- Use GitLab’s interface to find a projects/groups.
+- Create and customize a project.
 - Archive (or delete) a project.
 - Connecting a GitLab project with a Git repository.
 - Explain the concepts of members and roles and adding members to a GitLab project.
