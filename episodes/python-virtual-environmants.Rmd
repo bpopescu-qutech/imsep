@@ -10,7 +10,6 @@ exercises: 20
 - Set up a Python virtual environment for our software project using `venv` and `pip`.
 - Managing external packages with `pip`
 - Exporting/Importing Virtual Environments
-- Running Python programs in a virtual environment
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
