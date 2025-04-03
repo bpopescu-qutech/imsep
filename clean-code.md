@@ -927,15 +927,17 @@ consistently throughout the code - which is much less error prone than doing it 
 
 ##### Configuring a Python interpreter for a PyCharm project
 
-For a given PyCharm project it is possible to setup a python interpreter,
-as shown below:
+For a given PyCharm project it is possible to setup a python interpreter, as shown below:
 
 ![](fig/pycharm_python_interpreter.jpg){alt='Running Pytest from PyCharm'}
 
-The selected interpreter can be the system-wide one, or one selected from a
-virtual environment. Once a Python interpreter has been configured, PyCharm
-will use it to run code (e.g. `.py` files part of that project), or analyze
-the code and provide useful hints to the developer:
+Newer versions of PyCharm will automatically select the Python interpreter from a virtual environment if the environment
+uses the default naming convention (e.g. `venv`) and is located in the project directory.
+
+The selected interpreter can be the system-wide one, or one selected from a virtual environment.
+
+Once a Python interpreter has been configured, PyCharm will use it to run code (e.g. `.py` files part of that project),
+or analyze the code and provide useful hints to the developer:
 
 ![](fig/pycharm_hints.jpg){alt='Running Pytest from PyCharm'}
 
@@ -1135,7 +1137,13 @@ test_simple_function.py .                                                [100%]
 ============================== 1 passed in 0.02s ==============================
 ```
 
-`Pytest` is a built-in python package, so no installation is needed. By default, when running `pytest` from the
+`Pytest` is an external Python package, and can be installed using `pip`:
+
+```bash
+$ python -m pip install pytest
+```
+
+By default, when running `pytest` from the
 command line, this package will look for any files named `test_*.py` or `*_test.py` in the working directory, and
 from these files run any functions names `test_*`. Inside these functions, you can test functionality using the
 `assert` keyword. A test function is assumed to fail if any `assert` fails, or if the the test function throws an exception.
