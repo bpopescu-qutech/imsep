@@ -802,7 +802,7 @@ changes?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul>
 <li><p>Recovering the excellent version is only possible if you created
@@ -1248,7 +1248,7 @@ in the <code>desserts</code> subdirectory?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>No. Alfredo does not need to make the <code>desserts</code>
 subdirectory a Git repository because the <code>recipes</code>
@@ -1297,7 +1297,7 @@ single git repository. How can Alfredo undo his last
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Solution – USE WITH CAUTION! </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="background">Background<a class="anchor" aria-label="anchor" href="#background"></a>
@@ -1421,7 +1421,7 @@ following episodes.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Accessing the Git visual tools in PyCharm is done by right-clicking
 on a file/folder in the left navigation panel, then selecting
@@ -7584,7 +7584,7 @@ based on the issues Pylint identifies, weighted by their severity.</p>
 <span id="cb28-32"><a href="#cb28-32" tabindex="-1"></a></span>
 <span id="cb28-33"><a href="#cb28-33" tabindex="-1"></a>main()</span></code></pre>
 </div>
-<pre class="text"><code>$ pylint bad_pylint.py
+<pre class="text"><code>$ python -m pylint bad_pylint.py
 ************* Module bad_example
 bad_example.py:34:0: C0304: Final newline missing (missing-final-newline)
 bad_example.py:1:0: C0114: Missing module docstring (missing-module-docstring)
@@ -7734,7 +7734,7 @@ an example consider this simple function:</p>
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">$</span> pytest</span>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-m</span> pytest</span>
 <span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="ex">=============================</span> test session starts =============================</span>
 <span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="ex">platform</span> win32 <span class="at">--</span> Python 3.11.8, pytest-8.0.2, pluggy-1.4.0</span>
 <span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="ex">rootdir:</span> C:<span class="dt">\p</span>rojects<span class="dt">\e</span>xamples</span>
@@ -7836,7 +7836,7 @@ can be easily done using <em>pip</em>:</p>
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="ex">coverage</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> coverage <span class="at">--version</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7898,12 +7898,12 @@ running your tests directly (e.g. with <code>pytest</code>), use
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="ex">coverage</span> run <span class="at">-m</span> pytest</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> coverage run <span class="at">-m</span> pytest test_math_utils.py</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>$ coverage run -m pytest
+<pre class="output" tabindex="0"><code>$ python -m coverage run -m pytest test_math_utils.py
 ============================= test session starts =============================
 platform win32 -- Python 3.8.8, pytest-8.1.1, pluggy-1.4.0
 rootdir: C:\projects\programming_course\prosoftdev-research\coverage
@@ -7918,12 +7918,12 @@ generate a coverage report:</p>
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="ex">coverage</span> report</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> coverage report</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>$ coverage report
+<pre class="output" tabindex="0"><code>$ python -m coverage report
 Name                 Stmts   Miss  Cover
 ----------------------------------------
 math_utils.py           10      1    90%
@@ -7943,7 +7943,7 @@ generate an HTML report.</p>
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="ex">coverage</span> html</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> coverage html</span></code></pre>
 </div>
 <p>This creates a directory named <em>htmlcov</em> containing detailed
 coverage reports. To visualize the report, you need to open the
