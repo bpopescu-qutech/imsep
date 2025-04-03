@@ -120,7 +120,7 @@ $ source venv/bin/activate
 ### General Rules
 
 - Follow standard conventions. Find a standard that suits you, and stick to it! For example:
-    - [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
+        - [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
     - [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 - Keep it simple stupid. Simpler is always better. Reduce complexity as much as possible.
 - Boy scout rule. Leave the campground cleaner than you found it.
@@ -1085,17 +1085,32 @@ Your code has been rated at 10.00/10 (previous run: 5.91/10, +4.09)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-<!--
-### Python Coding Conventions
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-- Introduce https://peps.python.org/pep-0008/
-- Advice: select a few rules, and start applying them consistently to your code:
-    - Indentation
-    - Maximum line length
-    - Whitespaces in Expressions and statements
-    - Naming conventions
-- Expand your rule selection
--->
+##### Instructing Pylint to ignore certain rules
+
+Pylint is a great tool, but sometimes you may want to ignore some of its advices - for example when they may not be
+suitable for the overall coding style you have chosen for your project, or when certain rule does not make sense for
+a given function/file in your project.
+
+Disabling a Pylint rule for a specific function is very simple - just add a comment next to that function definition,
+like this:
+
+```python
+def my_function():  # pylint: disable=missing-function-docstring
+    pass
+```
+
+To disable that rule for the entire file, add the same comment at the top of the file:
+
+```python
+# pylint: disable=missing-function-docstring
+```
+
+It is also possible to create custom Pylint configuration files for your project, as explained in the
+[documentation](https://pylint.pycqa.org/en/stable/user_guide/configuration/index.html?utm_source=)
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ### Unit Tests
