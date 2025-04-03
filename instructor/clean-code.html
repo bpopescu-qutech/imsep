@@ -365,7 +365,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Clean Code</h1>
-        <p>Last updated on 2025-03-21 |
+        <p>Last updated on 2025-04-03 |
 
         <a href="https://github.com/QuTech-Delft/prosoftdev-research/edit/main/episodes/clean-code.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -583,7 +583,7 @@ into the actual code.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -653,7 +653,7 @@ should be in close visual proximity.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -953,7 +953,7 @@ function should fit on one screen.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1094,7 +1094,7 @@ your function names</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1446,7 +1446,7 @@ refactor it into “clean” test code?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The above test breaks many of the “clean” tests and “clean” code
 principles:</p>
@@ -1501,11 +1501,15 @@ hand.</p>
 <div class="callout-content">
 <p>For a given PyCharm project it is possible to setup a python
 interpreter, as shown below:</p>
-<figure><img src="../fig/pycharm_python_interpreter.jpg" alt="Running Pytest from PyCharm" class="figure mx-auto d-block"></figure><p>The selected interpreter can be the system-wide one, or one selected
-from a virtual environment. Once a Python interpreter has been
-configured, PyCharm will use it to run code (e.g. <code>.py</code> files
-part of that project), or analyze the code and provide useful hints to
-the developer:</p>
+<figure><img src="../fig/pycharm_python_interpreter.jpg" alt="Running Pytest from PyCharm" class="figure mx-auto d-block"></figure><p>Newer versions of PyCharm will automatically select the Python
+interpreter from a virtual environment if the environment uses the
+default naming convention (e.g. <code>venv</code>) and is located in the
+project directory.</p>
+<p>The selected interpreter can be the system-wide one, or one selected
+from a virtual environment.</p>
+<p>Once a Python interpreter has been configured, PyCharm will use it to
+run code (e.g. <code>.py</code> files part of that project), or analyze
+the code and provide useful hints to the developer:</p>
 <figure><img src="../fig/pycharm_hints.jpg" alt="Running Pytest from PyCharm" class="figure mx-auto d-block"></figure><p>The figure above shows Pycharm hints in action: in this case the
 function <code>divide_numbers()</code> has not yet been defined. PyCharm
 then marks the place where the undefined function is invoked in the code
@@ -1608,7 +1612,7 @@ Your code has been rated at 5.91/10</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1715,10 +1719,16 @@ an example consider this simple function:</p>
 <span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a></span>
 <span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a><span class="ex">==============================</span> 1 passed in 0.02s ==============================</span></code></pre>
 </div>
-<p><code>Pytest</code> is a built-in python package, so no installation
-is needed. By default, when running <code>pytest</code> from the command
-line, this package will look for any files named <code>test_*.py</code>
-or <code>*_test.py</code> in the working directory, and from these files
+<p><code>Pytest</code> is an external Python package, and can be
+installed using <code>pip</code>:</p>
+<div class="codewrapper sourceCode" id="cb35">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-m</span> pip install pytest</span></code></pre>
+</div>
+<p>By default, when running <code>pytest</code> from the command line,
+this package will look for any files named <code>test_*.py</code> or
+<code>*_test.py</code> in the working directory, and from these files
 run any functions names <code>test_*</code>. Inside these functions, you
 can test functionality using the <code>assert</code> keyword. A test
 function is assumed to fail if any <code>assert</code> fails, or if the
@@ -1785,16 +1795,16 @@ frameworks like pytest.</p>
 <h5 id="installing-coverage-py">Installing coverage.py<a class="anchor" aria-label="anchor" href="#installing-coverage-py"></a></h5>
 <p>To use <em>coverage.py</em> you will need to install it first. This
 can be easily done using <em>pip</em>:</p>
-<div class="codewrapper sourceCode" id="cb35">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install coverage</span></code></pre>
-</div>
-<p>You can then verify the installation:</p>
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">coverage</span> <span class="at">--version</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install coverage</span></code></pre>
+</div>
+<p>You can then verify the installation:</p>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="ex">coverage</span> <span class="at">--version</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1807,55 +1817,55 @@ Full documentation is at https://coverage.readthedocs.io/en/7.4.3</code></pre>
 <h5 id="running-coverage-py">Running coverage.py<a class="anchor" aria-label="anchor" href="#running-coverage-py"></a></h5>
 <p>For this section, we will use a simple example, where we are
 developing a <em>math_utils.py</em> library:</p>
-<div class="codewrapper sourceCode" id="cb38">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="co"># math_utils.py</span></span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a><span class="kw">def</span> add(a, b):</span>
-<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a><span class="kw">def</span> subtract(a, b):</span>
-<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">-</span> b</span>
-<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a></span>
-<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a><span class="kw">def</span> multiply(a, b):</span>
-<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">*</span> b</span>
-<span id="cb38-11"><a href="#cb38-11" tabindex="-1"></a></span>
-<span id="cb38-12"><a href="#cb38-12" tabindex="-1"></a><span class="kw">def</span> divide(a, b):</span>
-<span id="cb38-13"><a href="#cb38-13" tabindex="-1"></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb38-14"><a href="#cb38-14" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Cannot divide by zero"</span>)</span>
-<span id="cb38-15"><a href="#cb38-15" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">/</span> b</span></code></pre>
-</div>
-<p>which we then test using unit tests in a <em>test_math_utils.py</em>
-file:</p>
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="co"># test_math_utils.py</span></span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="co"># math_utils.py</span></span>
 <span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="im">from</span> math_utils <span class="im">import</span> add, subtract, multiply, divide</span>
-<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="kw">def</span> add(a, b):</span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
 <span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a></span>
-<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a><span class="kw">def</span> test_add():</span>
-<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a>    <span class="cf">assert</span> add(<span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> <span class="dv">5</span></span>
+<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a><span class="kw">def</span> subtract(a, b):</span>
+<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">-</span> b</span>
 <span id="cb39-8"><a href="#cb39-8" tabindex="-1"></a></span>
-<span id="cb39-9"><a href="#cb39-9" tabindex="-1"></a><span class="kw">def</span> test_subtract():</span>
-<span id="cb39-10"><a href="#cb39-10" tabindex="-1"></a>    <span class="cf">assert</span> subtract(<span class="dv">0</span>, <span class="dv">1</span>) <span class="op">==</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb39-9"><a href="#cb39-9" tabindex="-1"></a><span class="kw">def</span> multiply(a, b):</span>
+<span id="cb39-10"><a href="#cb39-10" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">*</span> b</span>
 <span id="cb39-11"><a href="#cb39-11" tabindex="-1"></a></span>
-<span id="cb39-12"><a href="#cb39-12" tabindex="-1"></a><span class="kw">def</span> test_multiply():</span>
-<span id="cb39-13"><a href="#cb39-13" tabindex="-1"></a>    <span class="cf">assert</span> multiply(<span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> <span class="dv">6</span></span>
-<span id="cb39-14"><a href="#cb39-14" tabindex="-1"></a></span>
-<span id="cb39-15"><a href="#cb39-15" tabindex="-1"></a><span class="kw">def</span> test_divide():</span>
-<span id="cb39-16"><a href="#cb39-16" tabindex="-1"></a>    <span class="cf">assert</span> divide(<span class="op">-</span><span class="dv">6</span>, <span class="dv">2</span>) <span class="op">==</span> <span class="op">-</span><span class="dv">3</span></span></code></pre>
+<span id="cb39-12"><a href="#cb39-12" tabindex="-1"></a><span class="kw">def</span> divide(a, b):</span>
+<span id="cb39-13"><a href="#cb39-13" tabindex="-1"></a>    <span class="cf">if</span> b <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb39-14"><a href="#cb39-14" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Cannot divide by zero"</span>)</span>
+<span id="cb39-15"><a href="#cb39-15" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">/</span> b</span></code></pre>
+</div>
+<p>which we then test using unit tests in a <em>test_math_utils.py</em>
+file:</p>
+<div class="codewrapper sourceCode" id="cb40">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="co"># test_math_utils.py</span></span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a><span class="im">from</span> math_utils <span class="im">import</span> add, subtract, multiply, divide</span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="kw">def</span> test_add():</span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a>    <span class="cf">assert</span> add(<span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> <span class="dv">5</span></span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="kw">def</span> test_subtract():</span>
+<span id="cb40-10"><a href="#cb40-10" tabindex="-1"></a>    <span class="cf">assert</span> subtract(<span class="dv">0</span>, <span class="dv">1</span>) <span class="op">==</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb40-11"><a href="#cb40-11" tabindex="-1"></a></span>
+<span id="cb40-12"><a href="#cb40-12" tabindex="-1"></a><span class="kw">def</span> test_multiply():</span>
+<span id="cb40-13"><a href="#cb40-13" tabindex="-1"></a>    <span class="cf">assert</span> multiply(<span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> <span class="dv">6</span></span>
+<span id="cb40-14"><a href="#cb40-14" tabindex="-1"></a></span>
+<span id="cb40-15"><a href="#cb40-15" tabindex="-1"></a><span class="kw">def</span> test_divide():</span>
+<span id="cb40-16"><a href="#cb40-16" tabindex="-1"></a>    <span class="cf">assert</span> divide(<span class="op">-</span><span class="dv">6</span>, <span class="dv">2</span>) <span class="op">==</span> <span class="op">-</span><span class="dv">3</span></span></code></pre>
 </div>
 <p>The <em>coverage.py</em> tool is typically used in conjunction with a
 testing framework, such as <em>pytest</em>; to use the tool, instead of
 running your tests directly (e.g. with <code>pytest</code>), use
 <code>coverage run</code> instead:</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="ex">coverage</span> run <span class="at">-m</span> pytest</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="ex">coverage</span> run <span class="at">-m</span> pytest</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1872,10 +1882,10 @@ test_math_utils.py ....                                                  [100%]
 </div>
 <p>Once you have run the <em>coverage.py</em> tool, it is possible to
 generate a coverage report:</p>
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="ex">coverage</span> report</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="ex">coverage</span> report</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1896,10 +1906,10 @@ coverage ratio with relative ease.</p>
 <h5 id="visualizing-test-coverage">Visualizing test coverage<a class="anchor" aria-label="anchor" href="#visualizing-test-coverage"></a></h5>
 <p>To make the results more user-friendly, <em>coverage.py</em> can
 generate an HTML report.</p>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="ex">coverage</span> html</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="ex">coverage</span> html</span></code></pre>
 </div>
 <p>This creates a directory named <em>htmlcov</em> containing detailed
 coverage reports. To visualize the report, you need to open the
@@ -1918,122 +1928,122 @@ the chance to apply most of the material covered in this course in a
 final project. For this final project we will be using this Python
 program, which is an expanded version of a challenge you have already
 seen earlier in this course:</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co"># Dummy calibration function - operations shown here have no "real life" meaning</span></span>
-<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="kw">def</span> calibrate_fridge(fridge_data, include_safety_checks):</span>
-<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>    fridge_id <span class="op">=</span> fridge_data.get(<span class="st">"id"</span>)</span>
-<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>    current_temp <span class="op">=</span> fridge_data.get(<span class="st">"current_temperature"</span>)</span>
-<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a>    target_temp <span class="op">=</span> fridge_data.get(<span class="st">"target_temperature"</span>)</span>
-<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a>    calibration_params <span class="op">=</span> fridge_data.get(<span class="st">"calibration_params"</span>)</span>
-<span id="cb45-7"><a href="#cb45-7" tabindex="-1"></a>    experiment_params <span class="op">=</span> fridge_data.get(<span class="st">"experiment_params"</span>)</span>
-<span id="cb45-8"><a href="#cb45-8" tabindex="-1"></a></span>
-<span id="cb45-9"><a href="#cb45-9" tabindex="-1"></a>    <span class="cf">if</span> include_safety_checks:</span>
-<span id="cb45-10"><a href="#cb45-10" tabindex="-1"></a>        <span class="cf">if</span> current_temp <span class="op">&gt;</span> calibration_params.get(<span class="st">"max_safe_temperature"</span>):</span>
-<span id="cb45-11"><a href="#cb45-11" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Unsafe temperature detected during calibration."</span>)</span>
-<span id="cb45-12"><a href="#cb45-12" tabindex="-1"></a>        <span class="cf">if</span> target_temp <span class="op">&lt;</span> calibration_params.get(<span class="st">"min_safe_temperature"</span>):</span>
-<span id="cb45-13"><a href="#cb45-13" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Unsafe target temperature detected during calibration."</span>)</span>
-<span id="cb45-14"><a href="#cb45-14" tabindex="-1"></a></span>
-<span id="cb45-15"><a href="#cb45-15" tabindex="-1"></a>    adjustment_factor <span class="op">=</span> calibration_params.get(<span class="st">"adjustment_factor"</span>, <span class="fl">1.0</span>)</span>
-<span id="cb45-16"><a href="#cb45-16" tabindex="-1"></a>    adjusted_temp <span class="op">=</span> current_temp <span class="op">+</span> (target_temp <span class="op">-</span> current_temp) <span class="op">*</span> adjustment_factor</span>
-<span id="cb45-17"><a href="#cb45-17" tabindex="-1"></a>    <span class="cf">if</span> adjusted_temp <span class="op">&gt;</span> calibration_params[<span class="st">"max_safe_temperature"</span>]:</span>
-<span id="cb45-18"><a href="#cb45-18" tabindex="-1"></a>        adjusted_temp <span class="op">=</span> calibration_params[<span class="st">"max_safe_temperature"</span>]</span>
-<span id="cb45-19"><a href="#cb45-19" tabindex="-1"></a>    <span class="cf">if</span> adjusted_temp <span class="op">&lt;</span> calibration_params[<span class="st">"min_safe_temperature"</span>]:</span>
-<span id="cb45-20"><a href="#cb45-20" tabindex="-1"></a>        adjusted_temp <span class="op">=</span> calibration_params[<span class="st">"min_safe_temperature"</span>]</span>
-<span id="cb45-21"><a href="#cb45-21" tabindex="-1"></a></span>
-<span id="cb45-22"><a href="#cb45-22" tabindex="-1"></a>    stabilization_steps <span class="op">=</span> calibration_params.get(<span class="st">"stabilization_steps"</span>, <span class="dv">10</span>)</span>
-<span id="cb45-23"><a href="#cb45-23" tabindex="-1"></a>    operating_temperature <span class="op">=</span> adjusted_temp</span>
-<span id="cb45-24"><a href="#cb45-24" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(stabilization_steps):</span>
-<span id="cb45-25"><a href="#cb45-25" tabindex="-1"></a>        correction_factor <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> (operating_temperature <span class="op">-</span> target_temp)</span>
-<span id="cb45-26"><a href="#cb45-26" tabindex="-1"></a>        operating_temperature <span class="op">-=</span> correction_factor</span>
-<span id="cb45-27"><a href="#cb45-27" tabindex="-1"></a></span>
-<span id="cb45-28"><a href="#cb45-28" tabindex="-1"></a>        <span class="cf">if</span> operating_temperature <span class="op">&lt;</span> target_temp:</span>
-<span id="cb45-29"><a href="#cb45-29" tabindex="-1"></a>            operating_temperature <span class="op">+=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if under target</span></span>
-<span id="cb45-30"><a href="#cb45-30" tabindex="-1"></a>        <span class="cf">elif</span> operating_temperature <span class="op">&gt;</span> target_temp:</span>
-<span id="cb45-31"><a href="#cb45-31" tabindex="-1"></a>            operating_temperature <span class="op">-=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if above target</span></span>
-<span id="cb45-32"><a href="#cb45-32" tabindex="-1"></a></span>
-<span id="cb45-33"><a href="#cb45-33" tabindex="-1"></a>        temperature_variance <span class="op">=</span> <span class="bu">abs</span>(operating_temperature <span class="op">-</span> target_temp)</span>
-<span id="cb45-34"><a href="#cb45-34" tabindex="-1"></a>        <span class="cf">if</span> temperature_variance <span class="op">&lt;</span> <span class="fl">0.01</span>:</span>
-<span id="cb45-35"><a href="#cb45-35" tabindex="-1"></a>            <span class="cf">break</span>  <span class="co"># Break early if within small tolerance</span></span>
-<span id="cb45-36"><a href="#cb45-36" tabindex="-1"></a>        operating_temperature <span class="op">-=</span> <span class="fl">0.01</span> <span class="op">*</span> temperature_variance</span>
-<span id="cb45-37"><a href="#cb45-37" tabindex="-1"></a></span>
-<span id="cb45-38"><a href="#cb45-38" tabindex="-1"></a>    telemetry_data <span class="op">=</span> {</span>
-<span id="cb45-39"><a href="#cb45-39" tabindex="-1"></a>        <span class="st">"fridge_id"</span>: fridge_id,</span>
-<span id="cb45-40"><a href="#cb45-40" tabindex="-1"></a>        <span class="st">"adjusted_temp"</span>: adjusted_temp,</span>
-<span id="cb45-41"><a href="#cb45-41" tabindex="-1"></a>        <span class="st">"safety_checks"</span>: include_safety_checks,</span>
-<span id="cb45-42"><a href="#cb45-42" tabindex="-1"></a>        <span class="st">"operating_temperature"</span>: operating_temperature</span>
-<span id="cb45-43"><a href="#cb45-43" tabindex="-1"></a>    }</span>
-<span id="cb45-44"><a href="#cb45-44" tabindex="-1"></a></span>
-<span id="cb45-45"><a href="#cb45-45" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Telemetry data: </span><span class="sc">{</span>telemetry_data<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb45-46"><a href="#cb45-46" tabindex="-1"></a></span>
-<span id="cb45-47"><a href="#cb45-47" tabindex="-1"></a>    <span class="co"># Experiment calibration logic</span></span>
-<span id="cb45-48"><a href="#cb45-48" tabindex="-1"></a>    scaling_factor <span class="op">=</span> experiment_params.get(<span class="st">"scaling_factor"</span>, <span class="fl">1.2</span>)</span>
-<span id="cb45-49"><a href="#cb45-49" tabindex="-1"></a>    offset_value <span class="op">=</span> experiment_params.get(<span class="st">"offset_value"</span>, <span class="dv">3</span>)</span>
-<span id="cb45-50"><a href="#cb45-50" tabindex="-1"></a>    smoothing_coefficient <span class="op">=</span> experiment_params.get(<span class="st">"smoothing_coefficient"</span>, <span class="fl">0.8</span>)</span>
-<span id="cb45-51"><a href="#cb45-51" tabindex="-1"></a>    window_size <span class="op">=</span> experiment_params.get(<span class="st">"window_size"</span>, <span class="dv">5</span>)</span>
-<span id="cb45-52"><a href="#cb45-52" tabindex="-1"></a>    modulation_factor <span class="op">=</span> experiment_params.get(<span class="st">"modulation_factor"</span>, <span class="fl">0.05</span>)</span>
-<span id="cb45-53"><a href="#cb45-53" tabindex="-1"></a>    experiment_data <span class="op">=</span> fridge_data.get(<span class="st">"experiment_data"</span>, [])</span>
-<span id="cb45-54"><a href="#cb45-54" tabindex="-1"></a></span>
-<span id="cb45-55"><a href="#cb45-55" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(experiment_data) <span class="op">!=</span> <span class="dv">20</span>:</span>
-<span id="cb45-56"><a href="#cb45-56" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Calibration data must have exactly 20 readings"</span>)</span>
-<span id="cb45-57"><a href="#cb45-57" tabindex="-1"></a></span>
-<span id="cb45-58"><a href="#cb45-58" tabindex="-1"></a>    experiment_data <span class="op">=</span> np.array(experiment_data)</span>
-<span id="cb45-59"><a href="#cb45-59" tabindex="-1"></a>    scaled_data <span class="op">=</span> experiment_data <span class="op">*</span> scaling_factor <span class="op">-</span> offset_value</span>
-<span id="cb45-60"><a href="#cb45-60" tabindex="-1"></a>    smoothed_data <span class="op">=</span> np.convolve(scaled_data, np.ones(window_size) <span class="op">/</span> window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
-<span id="cb45-61"><a href="#cb45-61" tabindex="-1"></a>    adjusted_data <span class="op">=</span> smoothed_data <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> modulation_factor <span class="op">*</span> np.sin(smoothed_data))</span>
-<span id="cb45-62"><a href="#cb45-62" tabindex="-1"></a>    experiment_temperature_adjustment <span class="op">=</span> np.tanh(</span>
-<span id="cb45-63"><a href="#cb45-63" tabindex="-1"></a>        np.average(adjusted_data, weights<span class="op">=</span>np.linspace(<span class="dv">1</span>, <span class="dv">2</span>, <span class="bu">len</span>(adjusted_data))) <span class="op">/</span> <span class="dv">10</span>)</span>
-<span id="cb45-64"><a href="#cb45-64" tabindex="-1"></a></span>
-<span id="cb45-65"><a href="#cb45-65" tabindex="-1"></a>    experiment_temperature <span class="op">=</span> operating_temperature <span class="op">+</span> experiment_temperature_adjustment</span>
-<span id="cb45-66"><a href="#cb45-66" tabindex="-1"></a></span>
-<span id="cb45-67"><a href="#cb45-67" tabindex="-1"></a>    experiment_outputs <span class="op">=</span> {</span>
-<span id="cb45-68"><a href="#cb45-68" tabindex="-1"></a>        <span class="st">"mean_before_adjustment"</span>: np.mean(experiment_data),</span>
-<span id="cb45-69"><a href="#cb45-69" tabindex="-1"></a>        <span class="st">"std_dev_before_adjustment"</span>: np.std(experiment_data),</span>
-<span id="cb45-70"><a href="#cb45-70" tabindex="-1"></a>        <span class="st">"mean_after_adjustment"</span>: np.mean(adjusted_data),</span>
-<span id="cb45-71"><a href="#cb45-71" tabindex="-1"></a>        <span class="st">"experiment_temperature_adjustment"</span>: experiment_temperature_adjustment,</span>
-<span id="cb45-72"><a href="#cb45-72" tabindex="-1"></a>        <span class="st">"calibration_factor"</span>: scaling_factor <span class="op">*</span> smoothing_coefficient <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="bu">abs</span>(modulation_factor)),</span>
-<span id="cb45-73"><a href="#cb45-73" tabindex="-1"></a>        <span class="st">"experiment_temperature"</span>: experiment_temperature</span>
-<span id="cb45-74"><a href="#cb45-74" tabindex="-1"></a>    }</span>
-<span id="cb45-75"><a href="#cb45-75" tabindex="-1"></a></span>
-<span id="cb45-76"><a href="#cb45-76" tabindex="-1"></a>    <span class="cf">return</span> telemetry_data, experiment_outputs</span>
-<span id="cb45-77"><a href="#cb45-77" tabindex="-1"></a></span>
-<span id="cb45-78"><a href="#cb45-78" tabindex="-1"></a></span>
-<span id="cb45-79"><a href="#cb45-79" tabindex="-1"></a><span class="kw">def</span> main():</span>
-<span id="cb45-80"><a href="#cb45-80" tabindex="-1"></a>    fridge_data <span class="op">=</span> {</span>
-<span id="cb45-81"><a href="#cb45-81" tabindex="-1"></a>        <span class="st">"id"</span>: <span class="st">"fridge123"</span>,</span>
-<span id="cb45-82"><a href="#cb45-82" tabindex="-1"></a>        <span class="st">"current_temperature"</span>: <span class="fl">5.0</span>,</span>
-<span id="cb45-83"><a href="#cb45-83" tabindex="-1"></a>        <span class="st">"target_temperature"</span>: <span class="fl">2.85</span>,</span>
-<span id="cb45-84"><a href="#cb45-84" tabindex="-1"></a>        <span class="st">"calibration_params"</span>: {</span>
-<span id="cb45-85"><a href="#cb45-85" tabindex="-1"></a>            <span class="st">"max_safe_temperature"</span>: <span class="fl">6.8</span>,</span>
-<span id="cb45-86"><a href="#cb45-86" tabindex="-1"></a>            <span class="st">"min_safe_temperature"</span>: <span class="fl">2.1</span>,</span>
-<span id="cb45-87"><a href="#cb45-87" tabindex="-1"></a>            <span class="st">"adjustment_factor"</span>: <span class="fl">1.05</span>,</span>
-<span id="cb45-88"><a href="#cb45-88" tabindex="-1"></a>            <span class="st">"stabilization_steps"</span>: <span class="dv">10</span></span>
-<span id="cb45-89"><a href="#cb45-89" tabindex="-1"></a>        },</span>
-<span id="cb45-90"><a href="#cb45-90" tabindex="-1"></a>        <span class="st">"experiment_params"</span>: {</span>
-<span id="cb45-91"><a href="#cb45-91" tabindex="-1"></a>            <span class="st">"scaling_factor"</span>: <span class="fl">1.1</span>,</span>
-<span id="cb45-92"><a href="#cb45-92" tabindex="-1"></a>            <span class="st">"offset_value"</span>: <span class="dv">2</span>,</span>
-<span id="cb45-93"><a href="#cb45-93" tabindex="-1"></a>            <span class="st">"smoothing_coefficient"</span>: <span class="fl">0.9</span>,</span>
-<span id="cb45-94"><a href="#cb45-94" tabindex="-1"></a>            <span class="st">"window_size"</span>: <span class="dv">3</span>,</span>
-<span id="cb45-95"><a href="#cb45-95" tabindex="-1"></a>            <span class="st">"modulation_factor"</span>: <span class="fl">0.03</span></span>
-<span id="cb45-96"><a href="#cb45-96" tabindex="-1"></a>        },</span>
-<span id="cb45-97"><a href="#cb45-97" tabindex="-1"></a>        <span class="st">"experiment_data"</span>: [<span class="fl">10.1</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">9.8</span>, <span class="op">-</span><span class="fl">10.3</span>, <span class="op">-</span><span class="fl">9.9</span>, <span class="fl">12.0</span>, <span class="fl">10.1</span>, <span class="fl">10.2</span>, <span class="fl">10.1</span>, <span class="fl">9.7</span>, <span class="op">-</span><span class="fl">15.1</span>,</span>
-<span id="cb45-98"><a href="#cb45-98" tabindex="-1"></a>                            <span class="fl">8.1</span>, <span class="dv">1</span><span class="op">-</span><span class="fl">1.2</span>, <span class="fl">10.3</span>, <span class="fl">10.0</span>, <span class="fl">10.1</span>, <span class="fl">7.2</span>, <span class="fl">9.8</span>, <span class="fl">9.9</span>, <span class="op">-</span><span class="fl">9.7</span>]</span>
-<span id="cb45-99"><a href="#cb45-99" tabindex="-1"></a>    }</span>
-<span id="cb45-100"><a href="#cb45-100" tabindex="-1"></a></span>
-<span id="cb45-101"><a href="#cb45-101" tabindex="-1"></a>    include_safety_checks <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb45-102"><a href="#cb45-102" tabindex="-1"></a></span>
-<span id="cb45-103"><a href="#cb45-103" tabindex="-1"></a>    <span class="co"># Run the function</span></span>
-<span id="cb45-104"><a href="#cb45-104" tabindex="-1"></a>    telemetry_data, experiment_outputs <span class="op">=</span> calibrate_fridge(fridge_data, include_safety_checks)</span>
-<span id="cb45-105"><a href="#cb45-105" tabindex="-1"></a></span>
-<span id="cb45-106"><a href="#cb45-106" tabindex="-1"></a>    <span class="co"># Print results</span></span>
-<span id="cb45-107"><a href="#cb45-107" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Telemetry Data:"</span>, telemetry_data)</span>
-<span id="cb45-108"><a href="#cb45-108" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Experiment Outputs:"</span>, experiment_outputs)</span>
-<span id="cb45-109"><a href="#cb45-109" tabindex="-1"></a></span>
-<span id="cb45-110"><a href="#cb45-110" tabindex="-1"></a><span class="co"># Run main function</span></span>
-<span id="cb45-111"><a href="#cb45-111" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb45-112"><a href="#cb45-112" tabindex="-1"></a>    main()</span>
-<span id="cb45-113"><a href="#cb45-113" tabindex="-1"></a></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="co"># Dummy calibration function - operations shown here have no "real life" meaning</span></span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="kw">def</span> calibrate_fridge(fridge_data, include_safety_checks):</span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>    fridge_id <span class="op">=</span> fridge_data.get(<span class="st">"id"</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a>    current_temp <span class="op">=</span> fridge_data.get(<span class="st">"current_temperature"</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>    target_temp <span class="op">=</span> fridge_data.get(<span class="st">"target_temperature"</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>    calibration_params <span class="op">=</span> fridge_data.get(<span class="st">"calibration_params"</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a>    experiment_params <span class="op">=</span> fridge_data.get(<span class="st">"experiment_params"</span>)</span>
+<span id="cb46-8"><a href="#cb46-8" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" tabindex="-1"></a>    <span class="cf">if</span> include_safety_checks:</span>
+<span id="cb46-10"><a href="#cb46-10" tabindex="-1"></a>        <span class="cf">if</span> current_temp <span class="op">&gt;</span> calibration_params.get(<span class="st">"max_safe_temperature"</span>):</span>
+<span id="cb46-11"><a href="#cb46-11" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Unsafe temperature detected during calibration."</span>)</span>
+<span id="cb46-12"><a href="#cb46-12" tabindex="-1"></a>        <span class="cf">if</span> target_temp <span class="op">&lt;</span> calibration_params.get(<span class="st">"min_safe_temperature"</span>):</span>
+<span id="cb46-13"><a href="#cb46-13" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"Unsafe target temperature detected during calibration."</span>)</span>
+<span id="cb46-14"><a href="#cb46-14" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" tabindex="-1"></a>    adjustment_factor <span class="op">=</span> calibration_params.get(<span class="st">"adjustment_factor"</span>, <span class="fl">1.0</span>)</span>
+<span id="cb46-16"><a href="#cb46-16" tabindex="-1"></a>    adjusted_temp <span class="op">=</span> current_temp <span class="op">+</span> (target_temp <span class="op">-</span> current_temp) <span class="op">*</span> adjustment_factor</span>
+<span id="cb46-17"><a href="#cb46-17" tabindex="-1"></a>    <span class="cf">if</span> adjusted_temp <span class="op">&gt;</span> calibration_params[<span class="st">"max_safe_temperature"</span>]:</span>
+<span id="cb46-18"><a href="#cb46-18" tabindex="-1"></a>        adjusted_temp <span class="op">=</span> calibration_params[<span class="st">"max_safe_temperature"</span>]</span>
+<span id="cb46-19"><a href="#cb46-19" tabindex="-1"></a>    <span class="cf">if</span> adjusted_temp <span class="op">&lt;</span> calibration_params[<span class="st">"min_safe_temperature"</span>]:</span>
+<span id="cb46-20"><a href="#cb46-20" tabindex="-1"></a>        adjusted_temp <span class="op">=</span> calibration_params[<span class="st">"min_safe_temperature"</span>]</span>
+<span id="cb46-21"><a href="#cb46-21" tabindex="-1"></a></span>
+<span id="cb46-22"><a href="#cb46-22" tabindex="-1"></a>    stabilization_steps <span class="op">=</span> calibration_params.get(<span class="st">"stabilization_steps"</span>, <span class="dv">10</span>)</span>
+<span id="cb46-23"><a href="#cb46-23" tabindex="-1"></a>    operating_temperature <span class="op">=</span> adjusted_temp</span>
+<span id="cb46-24"><a href="#cb46-24" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(stabilization_steps):</span>
+<span id="cb46-25"><a href="#cb46-25" tabindex="-1"></a>        correction_factor <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> (operating_temperature <span class="op">-</span> target_temp)</span>
+<span id="cb46-26"><a href="#cb46-26" tabindex="-1"></a>        operating_temperature <span class="op">-=</span> correction_factor</span>
+<span id="cb46-27"><a href="#cb46-27" tabindex="-1"></a></span>
+<span id="cb46-28"><a href="#cb46-28" tabindex="-1"></a>        <span class="cf">if</span> operating_temperature <span class="op">&lt;</span> target_temp:</span>
+<span id="cb46-29"><a href="#cb46-29" tabindex="-1"></a>            operating_temperature <span class="op">+=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if under target</span></span>
+<span id="cb46-30"><a href="#cb46-30" tabindex="-1"></a>        <span class="cf">elif</span> operating_temperature <span class="op">&gt;</span> target_temp:</span>
+<span id="cb46-31"><a href="#cb46-31" tabindex="-1"></a>            operating_temperature <span class="op">-=</span> <span class="fl">0.05</span>  <span class="co"># Minor correction if above target</span></span>
+<span id="cb46-32"><a href="#cb46-32" tabindex="-1"></a></span>
+<span id="cb46-33"><a href="#cb46-33" tabindex="-1"></a>        temperature_variance <span class="op">=</span> <span class="bu">abs</span>(operating_temperature <span class="op">-</span> target_temp)</span>
+<span id="cb46-34"><a href="#cb46-34" tabindex="-1"></a>        <span class="cf">if</span> temperature_variance <span class="op">&lt;</span> <span class="fl">0.01</span>:</span>
+<span id="cb46-35"><a href="#cb46-35" tabindex="-1"></a>            <span class="cf">break</span>  <span class="co"># Break early if within small tolerance</span></span>
+<span id="cb46-36"><a href="#cb46-36" tabindex="-1"></a>        operating_temperature <span class="op">-=</span> <span class="fl">0.01</span> <span class="op">*</span> temperature_variance</span>
+<span id="cb46-37"><a href="#cb46-37" tabindex="-1"></a></span>
+<span id="cb46-38"><a href="#cb46-38" tabindex="-1"></a>    telemetry_data <span class="op">=</span> {</span>
+<span id="cb46-39"><a href="#cb46-39" tabindex="-1"></a>        <span class="st">"fridge_id"</span>: fridge_id,</span>
+<span id="cb46-40"><a href="#cb46-40" tabindex="-1"></a>        <span class="st">"adjusted_temp"</span>: adjusted_temp,</span>
+<span id="cb46-41"><a href="#cb46-41" tabindex="-1"></a>        <span class="st">"safety_checks"</span>: include_safety_checks,</span>
+<span id="cb46-42"><a href="#cb46-42" tabindex="-1"></a>        <span class="st">"operating_temperature"</span>: operating_temperature</span>
+<span id="cb46-43"><a href="#cb46-43" tabindex="-1"></a>    }</span>
+<span id="cb46-44"><a href="#cb46-44" tabindex="-1"></a></span>
+<span id="cb46-45"><a href="#cb46-45" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Telemetry data: </span><span class="sc">{</span>telemetry_data<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb46-46"><a href="#cb46-46" tabindex="-1"></a></span>
+<span id="cb46-47"><a href="#cb46-47" tabindex="-1"></a>    <span class="co"># Experiment calibration logic</span></span>
+<span id="cb46-48"><a href="#cb46-48" tabindex="-1"></a>    scaling_factor <span class="op">=</span> experiment_params.get(<span class="st">"scaling_factor"</span>, <span class="fl">1.2</span>)</span>
+<span id="cb46-49"><a href="#cb46-49" tabindex="-1"></a>    offset_value <span class="op">=</span> experiment_params.get(<span class="st">"offset_value"</span>, <span class="dv">3</span>)</span>
+<span id="cb46-50"><a href="#cb46-50" tabindex="-1"></a>    smoothing_coefficient <span class="op">=</span> experiment_params.get(<span class="st">"smoothing_coefficient"</span>, <span class="fl">0.8</span>)</span>
+<span id="cb46-51"><a href="#cb46-51" tabindex="-1"></a>    window_size <span class="op">=</span> experiment_params.get(<span class="st">"window_size"</span>, <span class="dv">5</span>)</span>
+<span id="cb46-52"><a href="#cb46-52" tabindex="-1"></a>    modulation_factor <span class="op">=</span> experiment_params.get(<span class="st">"modulation_factor"</span>, <span class="fl">0.05</span>)</span>
+<span id="cb46-53"><a href="#cb46-53" tabindex="-1"></a>    experiment_data <span class="op">=</span> fridge_data.get(<span class="st">"experiment_data"</span>, [])</span>
+<span id="cb46-54"><a href="#cb46-54" tabindex="-1"></a></span>
+<span id="cb46-55"><a href="#cb46-55" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(experiment_data) <span class="op">!=</span> <span class="dv">20</span>:</span>
+<span id="cb46-56"><a href="#cb46-56" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Calibration data must have exactly 20 readings"</span>)</span>
+<span id="cb46-57"><a href="#cb46-57" tabindex="-1"></a></span>
+<span id="cb46-58"><a href="#cb46-58" tabindex="-1"></a>    experiment_data <span class="op">=</span> np.array(experiment_data)</span>
+<span id="cb46-59"><a href="#cb46-59" tabindex="-1"></a>    scaled_data <span class="op">=</span> experiment_data <span class="op">*</span> scaling_factor <span class="op">-</span> offset_value</span>
+<span id="cb46-60"><a href="#cb46-60" tabindex="-1"></a>    smoothed_data <span class="op">=</span> np.convolve(scaled_data, np.ones(window_size) <span class="op">/</span> window_size, mode<span class="op">=</span><span class="st">'valid'</span>)</span>
+<span id="cb46-61"><a href="#cb46-61" tabindex="-1"></a>    adjusted_data <span class="op">=</span> smoothed_data <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> modulation_factor <span class="op">*</span> np.sin(smoothed_data))</span>
+<span id="cb46-62"><a href="#cb46-62" tabindex="-1"></a>    experiment_temperature_adjustment <span class="op">=</span> np.tanh(</span>
+<span id="cb46-63"><a href="#cb46-63" tabindex="-1"></a>        np.average(adjusted_data, weights<span class="op">=</span>np.linspace(<span class="dv">1</span>, <span class="dv">2</span>, <span class="bu">len</span>(adjusted_data))) <span class="op">/</span> <span class="dv">10</span>)</span>
+<span id="cb46-64"><a href="#cb46-64" tabindex="-1"></a></span>
+<span id="cb46-65"><a href="#cb46-65" tabindex="-1"></a>    experiment_temperature <span class="op">=</span> operating_temperature <span class="op">+</span> experiment_temperature_adjustment</span>
+<span id="cb46-66"><a href="#cb46-66" tabindex="-1"></a></span>
+<span id="cb46-67"><a href="#cb46-67" tabindex="-1"></a>    experiment_outputs <span class="op">=</span> {</span>
+<span id="cb46-68"><a href="#cb46-68" tabindex="-1"></a>        <span class="st">"mean_before_adjustment"</span>: np.mean(experiment_data),</span>
+<span id="cb46-69"><a href="#cb46-69" tabindex="-1"></a>        <span class="st">"std_dev_before_adjustment"</span>: np.std(experiment_data),</span>
+<span id="cb46-70"><a href="#cb46-70" tabindex="-1"></a>        <span class="st">"mean_after_adjustment"</span>: np.mean(adjusted_data),</span>
+<span id="cb46-71"><a href="#cb46-71" tabindex="-1"></a>        <span class="st">"experiment_temperature_adjustment"</span>: experiment_temperature_adjustment,</span>
+<span id="cb46-72"><a href="#cb46-72" tabindex="-1"></a>        <span class="st">"calibration_factor"</span>: scaling_factor <span class="op">*</span> smoothing_coefficient <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="bu">abs</span>(modulation_factor)),</span>
+<span id="cb46-73"><a href="#cb46-73" tabindex="-1"></a>        <span class="st">"experiment_temperature"</span>: experiment_temperature</span>
+<span id="cb46-74"><a href="#cb46-74" tabindex="-1"></a>    }</span>
+<span id="cb46-75"><a href="#cb46-75" tabindex="-1"></a></span>
+<span id="cb46-76"><a href="#cb46-76" tabindex="-1"></a>    <span class="cf">return</span> telemetry_data, experiment_outputs</span>
+<span id="cb46-77"><a href="#cb46-77" tabindex="-1"></a></span>
+<span id="cb46-78"><a href="#cb46-78" tabindex="-1"></a></span>
+<span id="cb46-79"><a href="#cb46-79" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb46-80"><a href="#cb46-80" tabindex="-1"></a>    fridge_data <span class="op">=</span> {</span>
+<span id="cb46-81"><a href="#cb46-81" tabindex="-1"></a>        <span class="st">"id"</span>: <span class="st">"fridge123"</span>,</span>
+<span id="cb46-82"><a href="#cb46-82" tabindex="-1"></a>        <span class="st">"current_temperature"</span>: <span class="fl">5.0</span>,</span>
+<span id="cb46-83"><a href="#cb46-83" tabindex="-1"></a>        <span class="st">"target_temperature"</span>: <span class="fl">2.85</span>,</span>
+<span id="cb46-84"><a href="#cb46-84" tabindex="-1"></a>        <span class="st">"calibration_params"</span>: {</span>
+<span id="cb46-85"><a href="#cb46-85" tabindex="-1"></a>            <span class="st">"max_safe_temperature"</span>: <span class="fl">6.8</span>,</span>
+<span id="cb46-86"><a href="#cb46-86" tabindex="-1"></a>            <span class="st">"min_safe_temperature"</span>: <span class="fl">2.1</span>,</span>
+<span id="cb46-87"><a href="#cb46-87" tabindex="-1"></a>            <span class="st">"adjustment_factor"</span>: <span class="fl">1.05</span>,</span>
+<span id="cb46-88"><a href="#cb46-88" tabindex="-1"></a>            <span class="st">"stabilization_steps"</span>: <span class="dv">10</span></span>
+<span id="cb46-89"><a href="#cb46-89" tabindex="-1"></a>        },</span>
+<span id="cb46-90"><a href="#cb46-90" tabindex="-1"></a>        <span class="st">"experiment_params"</span>: {</span>
+<span id="cb46-91"><a href="#cb46-91" tabindex="-1"></a>            <span class="st">"scaling_factor"</span>: <span class="fl">1.1</span>,</span>
+<span id="cb46-92"><a href="#cb46-92" tabindex="-1"></a>            <span class="st">"offset_value"</span>: <span class="dv">2</span>,</span>
+<span id="cb46-93"><a href="#cb46-93" tabindex="-1"></a>            <span class="st">"smoothing_coefficient"</span>: <span class="fl">0.9</span>,</span>
+<span id="cb46-94"><a href="#cb46-94" tabindex="-1"></a>            <span class="st">"window_size"</span>: <span class="dv">3</span>,</span>
+<span id="cb46-95"><a href="#cb46-95" tabindex="-1"></a>            <span class="st">"modulation_factor"</span>: <span class="fl">0.03</span></span>
+<span id="cb46-96"><a href="#cb46-96" tabindex="-1"></a>        },</span>
+<span id="cb46-97"><a href="#cb46-97" tabindex="-1"></a>        <span class="st">"experiment_data"</span>: [<span class="fl">10.1</span>, <span class="op">-</span><span class="fl">6.8</span>, <span class="fl">9.8</span>, <span class="op">-</span><span class="fl">10.3</span>, <span class="op">-</span><span class="fl">9.9</span>, <span class="fl">12.0</span>, <span class="fl">10.1</span>, <span class="fl">10.2</span>, <span class="fl">10.1</span>, <span class="fl">9.7</span>, <span class="op">-</span><span class="fl">15.1</span>,</span>
+<span id="cb46-98"><a href="#cb46-98" tabindex="-1"></a>                            <span class="fl">8.1</span>, <span class="dv">1</span><span class="op">-</span><span class="fl">1.2</span>, <span class="fl">10.3</span>, <span class="fl">10.0</span>, <span class="fl">10.1</span>, <span class="fl">7.2</span>, <span class="fl">9.8</span>, <span class="fl">9.9</span>, <span class="op">-</span><span class="fl">9.7</span>]</span>
+<span id="cb46-99"><a href="#cb46-99" tabindex="-1"></a>    }</span>
+<span id="cb46-100"><a href="#cb46-100" tabindex="-1"></a></span>
+<span id="cb46-101"><a href="#cb46-101" tabindex="-1"></a>    include_safety_checks <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb46-102"><a href="#cb46-102" tabindex="-1"></a></span>
+<span id="cb46-103"><a href="#cb46-103" tabindex="-1"></a>    <span class="co"># Run the function</span></span>
+<span id="cb46-104"><a href="#cb46-104" tabindex="-1"></a>    telemetry_data, experiment_outputs <span class="op">=</span> calibrate_fridge(fridge_data, include_safety_checks)</span>
+<span id="cb46-105"><a href="#cb46-105" tabindex="-1"></a></span>
+<span id="cb46-106"><a href="#cb46-106" tabindex="-1"></a>    <span class="co"># Print results</span></span>
+<span id="cb46-107"><a href="#cb46-107" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Telemetry Data:"</span>, telemetry_data)</span>
+<span id="cb46-108"><a href="#cb46-108" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Experiment Outputs:"</span>, experiment_outputs)</span>
+<span id="cb46-109"><a href="#cb46-109" tabindex="-1"></a></span>
+<span id="cb46-110"><a href="#cb46-110" tabindex="-1"></a><span class="co"># Run main function</span></span>
+<span id="cb46-111"><a href="#cb46-111" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb46-112"><a href="#cb46-112" tabindex="-1"></a>    main()</span>
+<span id="cb46-113"><a href="#cb46-113" tabindex="-1"></a></span></code></pre>
 </div>
 <p>Given this code, the challenge/final project of this course is the
 following:</p>
@@ -2139,9 +2149,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://QuTech-Delft.github.io/prosoftdev-research/instructor/clean-code.html",
   "identifier": "https://QuTech-Delft.github.io/prosoftdev-research/instructor/clean-code.html",
-  "dateCreated": "2025-04-02",
-  "dateModified": "2025-03-21",
-  "datePublished": "2025-04-02"
+  "dateCreated": "2025-04-03",
+  "dateModified": "2025-04-03",
+  "datePublished": "2025-04-03"
 }
 
   </script><script>
