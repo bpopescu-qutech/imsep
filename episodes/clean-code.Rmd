@@ -1005,7 +1005,7 @@ main()
 ```
 
 ```text
-$ pylint bad_pylint.py
+$ python -m pylint bad_pylint.py
 ************* Module bad_example
 bad_example.py:34:0: C0304: Final newline missing (missing-final-newline)
 bad_example.py:1:0: C0114: Missing module docstring (missing-module-docstring)
@@ -1140,7 +1140,7 @@ def test_simple_function():
 and then running `pytest` from the command line:
 
 ```bash
-$ pytest
+$ python -m pytest
 ============================= test session starts =============================
 platform win32 -- Python 3.11.8, pytest-8.0.2, pluggy-1.4.0
 rootdir: C:\projects\examples
@@ -1214,7 +1214,7 @@ python -m pip install coverage
 You can then verify the installation:
 
 ```bash
-coverage --version
+python -m coverage --version
 ```
 ``` output
 Coverage.py, version 7.4.3 with C extension
@@ -1269,11 +1269,11 @@ The *coverage.py* tool is typically used in conjunction with a testing framework
 instead of running your tests directly (e.g. with `pytest`), use `coverage run` instead:
 
 ```bash
-coverage run -m pytest
+python -m coverage run -m pytest test_math_utils.py
 ```
 
 ```output
-$ coverage run -m pytest
+$ python -m coverage run -m pytest test_math_utils.py
 ============================= test session starts =============================
 platform win32 -- Python 3.8.8, pytest-8.1.1, pluggy-1.4.0
 rootdir: C:\projects\programming_course\prosoftdev-research\coverage
@@ -1287,11 +1287,11 @@ test_math_utils.py ....                                                  [100%]
 Once you have run the *coverage.py* tool, it is possible to generate a coverage report:
 
 ```bash
-coverage report
+python -m coverage report
 ```
 
 ```output
-$ coverage report
+$ python -m coverage report
 Name                 Stmts   Miss  Cover
 ----------------------------------------
 math_utils.py           10      1    90%
@@ -1308,7 +1308,7 @@ As you can see, in this (simple) case we have achieved a very high coverage rati
 To make the results more user-friendly, *coverage.py* can generate an HTML report.
 
 ```bash
-coverage html
+python -m coverage html
 ```
 
 This creates a directory named *htmlcov* containing detailed coverage reports. To visualize the report, you
