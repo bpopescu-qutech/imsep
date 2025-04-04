@@ -956,7 +956,9 @@ coding standards, and suggesting improvements. It checks for issues like unused 
 missing documentation.
 
 Pylint assigns a score to your code, ranging from -10.0 (very poor) to 10.0 (perfect). This score reflects the overall
-quality of your code based on the issues Pylint identifies, weighted by their severity.
+quality of your code based on the issues Pylint identifies, weighted by their severity. Pylint also outputs each
+location in your code where it has found issues that reduce your score, together with a short explanation of the problem
+it has found. You can use this output to guide your code refactoring, which eventually should lead to cleaner code.
 
 Pylint can be easily installed using `pip`:
 
