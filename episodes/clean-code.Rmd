@@ -1334,6 +1334,9 @@ in this course in a final project. For this final project we will be using this 
 version of a challenge you have already seen earlier in this course:
 
 ```python
+import numpy as np
+
+
 # Dummy calibration function - operations shown here have no "real life" meaning
 def calibrate_fridge(fridge_data, include_safety_checks):
     fridge_id = fridge_data.get("id")
@@ -1377,8 +1380,6 @@ def calibrate_fridge(fridge_data, include_safety_checks):
         "safety_checks": include_safety_checks,
         "operating_temperature": operating_temperature
     }
-
-    print(f"Telemetry data: {telemetry_data}")
 
     # Experiment calibration logic
     scaling_factor = experiment_params.get("scaling_factor", 1.2)
