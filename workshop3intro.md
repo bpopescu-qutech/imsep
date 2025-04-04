@@ -2,7 +2,7 @@
 title: "Intermezzo II"
 ---
 
-Welcome to the third and last workshop of the "Introduction to Modern Software Engineering Series".
+Welcome to the third and last workshop of the "Introduction to Modern Software Engineering Practices" series.
 
 There is already quite a bit of material that has been covered in the first two workshops, and by
 now you should have a good understanding, and some practice using some very important modern software
