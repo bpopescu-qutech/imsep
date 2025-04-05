@@ -365,7 +365,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Clean Code</h1>
-        <p>Last updated on 2025-04-04 |
+        <p>Last updated on 2025-04-05 |
 
         <a href="https://github.com/QuTech-Delft/prosoftdev-research/edit/main/episodes/clean-code.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -1700,52 +1700,59 @@ your project, as explained in the <a href="https://pylint.pycqa.org/en/stable/us
 </div>
 </div>
 <div class="section level3">
-<h3 id="unit-tests">Unit Tests<a class="anchor" aria-label="anchor" href="#unit-tests"></a></h3>
-<p><code>Pytest</code> is a simple yet powerful tool for testing Python
-code. You can write tests as regular functions and run them easily. As
-an example consider this simple function:</p>
+<h3 id="pytest---a-simple-yet-powerful-unit-test-framework">Pytest - a simple yet powerful unit test framework<a class="anchor" aria-label="anchor" href="#pytest---a-simple-yet-powerful-unit-test-framework"></a></h3>
+<p>We have already discussed the importance of unit tests in the context
+of clean code. Unit tests become even more powerful in facilitating
+change when they are used together with unit test frameworks. Such
+frameworks make it very easy to write and execute unit tests, and
+typically integrate smoothly with modern IDEs such as PyCharm.
+<code>Pytest</code> is a simple yet powerful such framework,
+specifically designed for testing Python code.</p>
+<p><code>Pytest</code> is an external Python package, so before we can
+use it, we need to install it via <code>pip</code>:</p>
 <div class="codewrapper sourceCode" id="cb34">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="co"># in simple_function.py</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="kw">def</span> simple_function(a, b):</span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-m</span> pip install pytest</span></code></pre>
 </div>
-<p>With <code>Pytest</code>, you can test it by creating anew file
-<code>test_simple_function.py</code>:</p>
+<p>With <code>Pytest</code> installed, you can write tests as regular
+functions and run them easily. As an example consider this simple
+function:</p>
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co"># in test_simple_function.py</span></span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="co"># in simple_function.py</span></span>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="im">from</span> simple_function <span class="im">import</span> simple_function</span>
-<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="kw">def</span> test_simple_function():</span>
-<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a>    <span class="cf">assert</span> simple_function(<span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> <span class="dv">5</span></span></code></pre>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="kw">def</span> simple_function(a, b):</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code></pre>
+</div>
+<p>With <code>Pytest</code>, you can test it by creating a new file
+<code>test_simple_function.py</code>:</p>
+<div class="codewrapper sourceCode" id="cb36">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co"># in test_simple_function.py</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="im">from</span> simple_function <span class="im">import</span> simple_function</span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a><span class="kw">def</span> test_simple_function():</span>
+<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a>    <span class="cf">assert</span> simple_function(<span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> <span class="dv">5</span></span></code></pre>
 </div>
 <p>and then running <code>pytest</code> from the command line:</p>
-<div class="codewrapper sourceCode" id="cb36">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-m</span> pytest</span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="ex">=============================</span> test session starts =============================</span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="ex">platform</span> win32 <span class="at">--</span> Python 3.11.8, pytest-8.0.2, pluggy-1.4.0</span>
-<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="ex">rootdir:</span> C:<span class="dt">\p</span>rojects<span class="dt">\e</span>xamples</span>
-<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a><span class="ex">plugins:</span> anyio-4.3.0, flaky-3.7.0, cov-4.1.0, mock-3.12.0</span>
-<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a><span class="ex">collected</span> 1 item</span>
-<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a></span>
-<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a><span class="ex">test_simple_function.py</span> .                                                <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
-<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a><span class="ex">==============================</span> 1 passed in 0.02s ==============================</span></code></pre>
-</div>
-<p><code>Pytest</code> is an external Python package, and can be
-installed using <code>pip</code>:</p>
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-m</span> pip install pytest</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="ex">$</span> python <span class="at">-m</span> pytest</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="ex">=============================</span> test session starts =============================</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="ex">platform</span> win32 <span class="at">--</span> Python 3.11.8, pytest-8.0.2, pluggy-1.4.0</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a><span class="ex">rootdir:</span> C:<span class="dt">\p</span>rojects<span class="dt">\e</span>xamples</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="ex">plugins:</span> anyio-4.3.0, flaky-3.7.0, cov-4.1.0, mock-3.12.0</span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a><span class="ex">collected</span> 1 item</span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a><span class="ex">test_simple_function.py</span> .                                                <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
+<span id="cb37-9"><a href="#cb37-9" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" tabindex="-1"></a><span class="ex">==============================</span> 1 passed in 0.02s ==============================</span></code></pre>
 </div>
 <p>By default, when running <code>pytest</code> from the command line,
 this package will look for any files named <code>test_*.py</code> or
@@ -2171,9 +2178,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://QuTech-Delft.github.io/prosoftdev-research/clean-code.html",
   "identifier": "https://QuTech-Delft.github.io/prosoftdev-research/clean-code.html",
-  "dateCreated": "2025-04-04",
-  "dateModified": "2025-04-04",
-  "datePublished": "2025-04-04"
+  "dateCreated": "2025-04-05",
+  "dateModified": "2025-04-05",
+  "datePublished": "2025-04-05"
 }
 
   </script><script>
