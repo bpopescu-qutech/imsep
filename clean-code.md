@@ -1115,9 +1115,20 @@ It is also possible to create custom Pylint configuration files for your project
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-### Unit Tests
+### Pytest - a simple yet powerful unit test framework
 
-`Pytest` is a simple yet powerful tool for testing Python code. You can write tests as regular functions and run
+We have already discussed the importance of unit tests in the context of clean code. Unit tests become even more
+powerful in facilitating change when they are used together with unit test frameworks. Such frameworks make
+it very easy to write and execute unit tests, and typically integrate smoothly with modern IDEs such as PyCharm.
+`Pytest` is a simple yet powerful such framework, specifically designed for testing Python code.
+
+`Pytest` is an external Python package, so before we can use it, we need to install it via `pip`:
+
+```bash
+$ python -m pip install pytest
+```
+
+With `Pytest` installed, you can write tests as regular functions and run
 them easily. As an example consider this simple function:
 
 ```python
@@ -1127,7 +1138,7 @@ def simple_function(a, b):
     return a + b
 ```
 
-With `Pytest`, you can test it by creating anew file `test_simple_function.py`:
+With `Pytest`, you can test it by creating a new file `test_simple_function.py`:
 
 ```python
 # in test_simple_function.py
@@ -1154,11 +1165,6 @@ test_simple_function.py .                                                [100%]
 ============================== 1 passed in 0.02s ==============================
 ```
 
-`Pytest` is an external Python package, and can be installed using `pip`:
-
-```bash
-$ python -m pip install pytest
-```
 
 By default, when running `pytest` from the
 command line, this package will look for any files named `test_*.py` or `*_test.py` in the working directory, and
