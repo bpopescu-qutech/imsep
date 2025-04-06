@@ -912,6 +912,14 @@ def test_division():
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Do not follow the clean code rules blindly; always keep in mind the guiding principles!
+- Do not try to write perfect clean code at once; instead, start with "normal code" and try to continuously improve it!
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 ## Clean Code Tools
 
 
