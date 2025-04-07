@@ -191,7 +191,7 @@ def calculate_total(cart, discount_rate):
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-##### Declare variables close to their usage.
+##### Declare/initialize variables close to their usage.
 
 Follows the same principle that closely related code constructs should be in close visual proximity.
 
