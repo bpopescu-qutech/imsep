@@ -120,7 +120,7 @@ $ source venv/bin/activate
 ### General Rules
 
 - Follow standard conventions. Find a standard that suits you, and stick to it! For example:
-        - [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
+    - [PEP 8 – Style Guide for Python Code](https://peps.python.org/pep-0008/)
     - [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
 - Keep it simple stupid. Simpler is always better. Reduce complexity as much as possible.
 - Boy scout rule. Leave the campground cleaner than you found it.
@@ -1303,18 +1303,18 @@ test_math_utils.py ....                                                  [100%]
 Once you have run the *coverage.py* tool, it is possible to generate a coverage report:
 
 ```bash
-python -m coverage report
+python -m coverage report -m
 ```
 
 ```output
-$ python -m coverage report
-Name                 Stmts   Miss  Cover
-----------------------------------------
-math_utils.py           10      1    90%
-test_math_utils.py      10      0   100%
-----------------------------------------
-TOTAL                   20      1    95%
+$ python -m coverage report -m
 
+Name                 Stmts   Miss  Cover   Missing
+--------------------------------------------------
+math_utils.py           10      1    90%   14
+test_math_utils.py      10      0   100%
+--------------------------------------------------
+TOTAL                   20      1    95%
 ```
 
 As you can see, in this (simple) case we have achieved a very high coverage ratio with relative ease.
